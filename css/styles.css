@@ -1,0 +1,184 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, black, purple);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.logo span {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-links :last-child {
+    margin-right: 20px;
+}
+
+.nav-item span {
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.nav-item span:hover {
+    color: #ff6b6b;
+}
+
+.main-content {
+    padding-top: 100px;
+    text-align: center;
+    color: white;
+}
+
+.main-content h1 {
+    font-size: 70px;
+}
+
+.main-content p {
+    font-size: 40px;
+    color: rgba(220, 221, 203, 0.864);
+}
+
+.navbar ion-icon {
+    color: white;
+}
+
+.search-container {
+    position: relative;
+    margin-top: 10px;
+
+    /* Add some spacing if needed */
+}
+
+.search-container .search-input {
+    height: 70px;
+    border-radius: 24px;
+    padding-left: 40px;
+    /* Space for the icon */
+    border: 1px solid #ddd;
+    /* Light border */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    width: 100%;
+    /* Full width */
+    font-size: 16px;
+    /* Adjust font size */
+    outline: none;
+    /* Remove default focus outline */
+}
+
+.search-input:focus {
+    border-color: #4285F4;
+    box-shadow: 0 2px 8px rgba(66, 133, 244, 0.2);
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
+}
+
+.mycontainer {
+    display: flex;
+    justify-content: center;
+}
+
+.typewriter h1 {
+    color: #fff;
+    font-family: monospace;
+    overflow: hidden;
+    /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange;
+    /* The typewriter cursor */
+    white-space: nowrap;
+    /* Keeps the content on a single line */
+    margin: 0 auto;
+    /* Centers the text */
+    letter-spacing: .15em;
+    /* Adjust as needed */
+    animation:
+        typing 8s steps(30, end) infinite,
+        blink-caret .75s step-end infinite;
+}
+
+/* The typing and deleting effect */
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+
+    50% {
+        width: 100%;
+        /* Fully typed */
+    }
+
+    100% {
+        width: 0;
+        /* Fully deleted */
+    }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: orange;
+    }
+}
+
+.card {
+    display: flex;
+    width: 190px;
+    height: 254px;
+    border-radius: 30px;
+    background: #212121;
+    box-shadow: 15px 15px 30px rgb(25, 25, 25),
+        -15px -15px 30px rgb(60, 60, 60);
+    align-items: center;
+    justify-content: center;
+}
+
+.card-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    padding: 30px;
+    box-sizing: border-box;
+}
