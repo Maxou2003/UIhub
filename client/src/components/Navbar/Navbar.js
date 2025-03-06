@@ -1,18 +1,18 @@
 import React from 'react';
-import './Header.css';
+import './Navbar.css';
 import { IonIcon } from '@ionic/react'; // Install @ionic/react if needed
 import { home, person } from 'ionicons/icons';
 
-function Header() {
+function Navbar() {
     return (
         <div className="navbar">
             <div className="logo">
-                <a href="/home" className="navbar-brand">
+                <a href="/" className="navbar-brand">
                     <span>UIhub</span>
                 </a>
             </div>
             <nav className="nav-links">
-                <a href="/home" className="nav-item">
+                <a href="/" className="nav-item">
                     <IonIcon icon={home} />
                     <span> Home </span>
                 </a>
@@ -25,4 +25,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default Navbar;
