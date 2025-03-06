@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const mongoose = require('mongoose');
-const stuffRoutes = require('./routes/stuff');
 const userRoutes = require('./routes/user');
 
 mongoose.connect('mongodb+srv://Maxou:Maxou*Dbpassword@cluster0.4uqax.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
