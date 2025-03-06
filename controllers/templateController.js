@@ -7,12 +7,21 @@ exports.getFrontTemplates = (req, res) => {
         .catch(error => res.status(500({error})));
 }
 
+exports.getTemplateWithId = (req, res) => {
+    Template.findOne({_id: req.query.id})
+        .then(template => {
+            if (template == null) {
+                res.status(401).json({message: 'Unknow id in the DB'})
+            }else{
+                res.status(200).json({template})
+            }
+        })
+        .catch(error => res.status(500).json({error}));
+}
+
 exports.saveTemplate = (req, res) => {
     const template = new Template({
-        html: req.body.html,
-        css: req.body.css,
-        owner: req.body.owner,
-        public: req.body.public
+        ...req.body
     });
     template.save()
         .then(() => res.status(201).json({message: 'Template saved'}))
