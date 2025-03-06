@@ -1,21 +1,61 @@
-import React from "react";
-import './LoginContent.css';
+import React, { useState } from "react";
+import './LoginForm.css';
+import axios from 'axios';
 
 function Login() {
+
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+    });
+
+    const [errors, setErrors] = useState({});
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
+
+    const validateForm = () => {
+        const newErrors = {};
+        if (!formData.email) newErrors.email = 'email is required.';
+        if (!formData.password) newErrors.password = 'Password is required.';
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0; // Return true if no errors
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!validateForm()) return; // Stop if validation fails
+
+        try {
+            const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+            console.log('Response from backend:', response.data);
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        }
+    };
+
     return (
         <div className="form-container">
             <p className="title">Login</p>
-            <form className="form">
+            <form className="form" onSubmit={handleSubmit}>
                 <div className="input-group">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="username" placeholder="" />
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="" value={formData.email} onChange={handleInputChange} />
+                    {errors.email && <p className="error">{errors.email}</p>}
                 </div>
                 <div className="input-group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="" />
-                    <div className="forgot">
-                        <a rel="noopener noreferrer" href="#">Forgot Password ?</a>
-                    </div>
+                    <input type="password" name="password" id="password" placeholder="" value={formData.password} onChange={handleInputChange} />
+                    {errors.password && <p className="error">{errors.password}</p>}
+                </div>
+                <div className="forgot">
+                    <a rel="noopener noreferrer" href="/">Forgot Password ?</a>
                 </div>
                 <button className="sign">Sign in</button>
             </form>
@@ -42,7 +82,7 @@ function Login() {
                 </button>
             </div>
             <p className="signup">Don't have an account?
-                <a rel="noopener noreferrer" href="/signup" className="">Sign up</a>
+                <a rel="noopener noreferrer" href="/signup" className=""> Sign up</a>
             </p>
         </div>
     );

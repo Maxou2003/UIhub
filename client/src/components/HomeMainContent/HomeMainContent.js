@@ -1,5 +1,5 @@
 import React from 'react';
-import './MainContent.css';
+import './HomeMainContent.css';
 import { IonIcon } from '@ionic/react';
 import { search } from 'ionicons/icons';
 import Card from '../Card/Card';

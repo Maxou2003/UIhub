@@ -2,6 +2,7 @@ import React from 'react';
 import './Navbar.css';
 import { IonIcon } from '@ionic/react'; // Install @ionic/react if needed
 import { home, person } from 'ionicons/icons';
+import SignupBtn from '../SignupBtn/SignupBtn';
 
 function Navbar() {
     return (
@@ -24,7 +25,7 @@ function Navbar() {
                     <button className="login-btn"> Log In </button>
                 </a>
                 <a href="/signup" className="nav-item">
-                    <button className="signup-btn"> Sign Up </button>
+                    <SignupBtn />
                 </a>
 
             </nav>

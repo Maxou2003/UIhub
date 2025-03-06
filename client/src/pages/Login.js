@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginContent from '../components/LoginContent/LoginContent';
+import LoginContent from '../components/LoginForm/LoginForm';
 import './css/Login.css';
 
 function Login() {
