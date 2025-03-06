@@ -20,6 +20,13 @@ function Navbar() {
                     <IonIcon icon={person} />
                     <span> Profile </span>
                 </a>
+                <a href="/login" className="nav-item">
+                    <button className="login-btn"> Log In </button>
+                </a>
+                <a href="/signup" className="nav-item">
+                    <button className="signup-btn"> Sign Up </button>
+                </a>
+
             </nav>
         </div>
     );

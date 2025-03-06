@@ -31,10 +31,11 @@ a {
 }
 
 .nav-links :last-child {
-    margin-right: 20px;
+    margin-right: 2vh;
 }
 
-.nav-item span {
+.nav-item span,
+button {
     color: white;
     font-size: 18px;
     font-weight: 500;
@@ -48,4 +49,20 @@ a {
 
 .navbar .nav-item {
     color: white;
+}
+
+.signup-btn {
+    background-color: #cdcdcd;
+    border-radius: 10%;
+    transition: ease 0.3s;
+}
+
+.login-btn {
+    background-color: transparent;
+    transition: ease 0.3s;
+    border: none;
+}
+
+.signup-btn:hover {
+    background-color: rgb(1, 22, 56);
 }
