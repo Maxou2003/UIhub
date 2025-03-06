@@ -1,10 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './HomeMainContent.css';
 import { IonIcon } from '@ionic/react';
 import { search } from 'ionicons/icons';
+import axios from 'axios';
 import Card from '../Card/Card';
 
 function MainContent() {
+
+    const [cards, setCards] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/template/getFront');
+                setCards(response.data);
+            } catch (error) {
+                setError(error);
+            } finally {
+                setLoading(false); // Set loading to false after the request completes
+            }
+        };
+
+        fetchData();
+    }, []); // Empty dependency array ensures this runs only once on mount
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (error) {
+        return <p>Error: {error.message}</p>;
+    }
+
+
     return (
         <div className="main-content">
             <div className="mycontainer">
@@ -26,8 +57,9 @@ function MainContent() {
             </div>
 
             <div className="card-gallery">
-                <Card />
-                <Card />
+                {cards.templates.map((card, index) => (
+                    <Card key={index} htmlString={card.html} cssString={card.css} />
+                ))}
             </div>
         </div>
     );

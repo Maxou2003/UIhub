@@ -8,12 +8,5 @@
         -5px -5px 10px #CDCDCD;
     align-items: center;
     justify-content: center;
-}
 
-.card-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
-    padding: 30px;
-    box-sizing: border-box;
 }

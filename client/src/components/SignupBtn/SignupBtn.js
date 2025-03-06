@@ -4,7 +4,7 @@ import './SignupBtn.css';
 function SignupBtn() {
     return (
         <div className="signup-btn">
-            <button class="button2">Sign Up</button>
+            <button className="button2">Sign Up</button>
         </div>
     );
 }
