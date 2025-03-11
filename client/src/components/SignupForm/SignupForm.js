@@ -4,24 +4,74 @@ import axios from 'axios';
 
 function SignupForm() {
 
+    const [formData, setFormData] = useState({
+        email: '',
+        username: '',
+        password: ''
+    });
+
+    const [errors, setErrors] = useState({});
+    const [loading, setLoading] = useState(false);
+
+    const handleInputChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    }
+
+    const validateForm = () => {
+        const newErrors = {};
+        if (!formData.email) newErrors.email = 'email is required.';
+        if (!formData.password) newErrors.password = 'Password is required.';
+        if (!formData.username) newErrors.username = 'Username is required.';
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0; // Return true if no errors
+    };
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setErrors({});
+        setLoading(true);
+
+        if (!validateForm()) { return; }
+
+        try {
+            const response = await axios.post('http://localhost:5000/api/auth/signup', formData);
+            console.log(response.data);
+            setLoading(false);
+        } catch (error) {
+            setLoading(false);
+            setErrors(error.response.data);
+        }
+    }
+
+
+
     return (
         <div className="form-container">
-            <p className="title">Login</p>
+            <p className="title">Create your account</p>
             <form className="form" onSubmit={handleSubmit}>
                 <div className="input-group">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" placeholder="" value={formData.email} onChange={handleInputChange} />
                     {errors.email && <p className="error">{errors.email}</p>}
                 </div>
+
+                <div className="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="" value={formData.username} onChange={handleInputChange} />
+                    {errors.username && <p className="error">{errors.username}</p>}
+                </div>
+
                 <div className="input-group">
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" placeholder="" value={formData.password} onChange={handleInputChange} />
                     {errors.password && <p className="error">{errors.password}</p>}
                 </div>
-                <div className="forgot">
-                    <a rel="noopener noreferrer" href="/">Forgot Password ?</a>
-                </div>
-                <button className="sign">Sign in</button>
+
+                <button className="sign">Sign up</button>
             </form>
             <div className="social-message">
                 <div className="line"></div>
@@ -45,8 +95,8 @@ function SignupForm() {
                     </svg>
                 </button>
             </div>
-            <p className="signup">Don't have an account?
-                <a rel="noopener noreferrer" href="/signup" className=""> Sign up</a>
+            <p className="login">Already have an account ?
+                <a rel="noopener noreferrer" href="/login" className=""> Log in</a>
             </p>
         </div>
     );
