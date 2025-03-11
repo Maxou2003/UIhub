@@ -1,6 +1,6 @@
 const Template = require('../models/Template');
 
-exports.getFrontTemplates = (req, res) => {
+exports.getTemplates = (req, res) => {
     Template.find({ public: true }).limit(45)
         .then(templates =>
             res.status(200).json({ templates }))
