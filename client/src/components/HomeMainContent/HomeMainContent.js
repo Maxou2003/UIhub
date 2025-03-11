@@ -15,7 +15,7 @@ function MainContent() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/template/getFront');
+                const response = await axios.get('http://localhost:5000/template/');
                 setCards(response.data);
             } catch (error) {
                 setError(error);

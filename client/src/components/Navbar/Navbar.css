@@ -57,5 +57,11 @@ ion-icon {
 .login-btn {
     background-color: transparent;
     transition: ease 0.3s;
-    border: none;
+    border: 1px solid rgb(1, 22, 56);
+    height: 7.5vh;
+    width: 18vh;
+    padding: 0.7em 1.7em;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 0.5em;
 }
