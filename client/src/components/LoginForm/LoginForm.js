@@ -34,7 +34,9 @@ function Login() {
 
         try {
             const response = await axios.post('http://localhost:5000/api/auth/login', formData);
-            console.log('Response from backend:', response.data);
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('user', JSON.stringify(response.data.userId));
+            window.location.href = '/';
         } catch (error) {
             console.error('Error submitting form:', error);
         }

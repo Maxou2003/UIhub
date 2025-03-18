@@ -68,3 +68,9 @@
     background-color: rgb(167, 139, 250);
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
+
+.ConnexionBtnContainer {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1vh;
+}
