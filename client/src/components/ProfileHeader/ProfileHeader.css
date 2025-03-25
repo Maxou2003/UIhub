@@ -38,7 +38,7 @@
     border-radius: 50%;
     border: 2px solid #fff;
     margin-top: -50px;
-    z-index: 1000;
+    z-index: 999;
 
 }
 
@@ -81,7 +81,7 @@
 .profile-header-button {
     height: 3em;
     border-radius: 0.5em;
-    background-color: rgb(167, 139, 250);
+    background-color: var(--btn-color);
     color: #ffffff;
     font-weight: bolder;
 }

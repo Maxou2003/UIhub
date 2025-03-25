@@ -1,3 +1,12 @@
+:root {
+    --background-color: rgb(1, 22, 56);
+    --navbar-color: #2c3d5c;
+    --box-shadow-color: rgba(0, 0, 0, 0.1);
+    --btn-color: rgb(167, 139, 250);
+}
+
+
+
 body {
-    background-color: rgb(1, 22, 56);
+    background-color: var(--background-color);
 }

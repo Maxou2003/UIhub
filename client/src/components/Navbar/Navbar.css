@@ -3,9 +3,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 1vh 20px;
-    background-color: #2c3d5c;
+    background-color: var(--navbar-color);
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px var(--box-shadow-color);
     position: fixed;
     top: 0;
     left: 0;
@@ -57,7 +57,7 @@ ion-icon {
 .login-btn {
     background-color: transparent;
     transition: ease 0.3s;
-    border: 1px solid rgb(1, 22, 56);
+    border: 1px solid var(--background-color);
     height: 7.5vh;
     width: 18vh;
     padding: 0.7em 1.7em;
