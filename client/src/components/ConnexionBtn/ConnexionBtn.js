@@ -4,15 +4,11 @@ import './ConnexionBtn.css';
 function ConnexionBtn() {
 
     const handleLogOut = () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+        localStorage.removeItem('key');
         localStorage.clear();
-        console.log(typeof (localStorage.getItem('token')));
-        console.log(`token :${localStorage.getItem('token')}`);
-        console.log(`user :${localStorage.getItem('user')}`);
     }
 
-    if (localStorage.getItem('token') === null) {
+    if (localStorage.getItem('key') === null) {
 
         return (
             <div className='ConnexionBtnContainer'>

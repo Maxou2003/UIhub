@@ -18,8 +18,13 @@ function ProfileCardCarroussel() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/template/');
+                const response = await axios.get('http://localhost:5000/api/profile/', {
+                    headers: {
+                        'Authorization': `Bearer ${JSON.parse(localStorage.getItem('key')).value}`
+                    }
+                });
                 setCards(response.data);
+
             } catch (error) {
                 setError(error);
             } finally {
@@ -29,7 +34,7 @@ function ProfileCardCarroussel() {
 
         fetchData();
     }, []); // Empty dependency array ensures this runs only once on mount
-
+    console.log(JSON.parse(localStorage.getItem('key')).value);
     const handleNext = () => {
         if (currentIndex + nbCards >= cards.templates.length) return;
         setCurrentIndex(currentIndex + nbCards);
@@ -49,12 +54,21 @@ function ProfileCardCarroussel() {
     }
 
     return (
-        <div className="profile-card-carrusel">
-            <IonIcon onClick={handlePrevious} className="chevron back-chevron" icon={chevronBack} />
-            {cards.templates.filter((card, index) => index >= currentIndex && index < currentIndex + nbCards).map((card, index) => (
-                < Card key={index} htmlString={card.html} cssString={card.css} />
-            ))}
-            <IonIcon onClick={handleNext} className="chevron forward-chevron" icon={chevronForward} />
+        <div>
+            <div className="profile-card-carrusel">
+                <IonIcon onClick={handlePrevious} className="chevron back-chevron" icon={chevronBack} />
+                {cards.favorite.filter((card, index) => index >= currentIndex && index < currentIndex + nbCards).map((card, index) => (
+                    < Card key={index} htmlString={card.html} cssString={card.css} />
+                ))}
+                <IonIcon onClick={handleNext} className="chevron forward-chevron" icon={chevronForward} />
+            </div>
+            <div className="profile-card-carrusel">
+                <IonIcon onClick={handlePrevious} className="chevron back-chevron" icon={chevronBack} />
+                {cards.template.filter((card, index) => index >= currentIndex && index < currentIndex + nbCards).map((card, index) => (
+                    < Card key={index} htmlString={card.html} cssString={card.css} />
+                ))}
+                <IonIcon onClick={handleNext} className="chevron forward-chevron" icon={chevronForward} />
+            </div>
         </div>
     );
 }
