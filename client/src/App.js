@@ -18,7 +18,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        {localStorage.getItem('token') != null &&
+        {JSON.parse(localStorage.getItem('key')).value != null &&
           <Route path="/profile" element={<Profile />} />
         }
       </Routes>

@@ -44,8 +44,15 @@ exports.login = (req, res) => {
         .catch(error => res.status(500).json({ error }));
 };
 
-exports.getalluser = ( req, res) => {
+exports.getalluser = (req, res) => {
     User.find()
         .then(users => res.status(200).json({ users }))
         .catch(error => res.status(401).json(error))
+}
+
+exports.getuser = (req, res) => {
+    User.findOne({ _id: req.auth.userId })
+        .then(user => res.status(200).json({ user }))
+        .catch(error => res.status(401).json(error))
+
 }

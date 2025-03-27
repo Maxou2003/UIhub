@@ -72,6 +72,26 @@
     margin-bottom: 1vh;
 }
 
+.profile-header-info .loading h1,
+.profile-header-info .loading p {
+    background-color: #212529;
+    color: #212529;
+}
+
+.profile-header-info .loading h1 {
+    width: 100%;
+    min-width: 20vh;
+    height: 5vh;
+}
+
+.profile-header-info .loading p {
+    width: 50%;
+    min-width: 10vh;
+    height: 1em;
+    margin: 0.5vh;
+}
+
+
 .profile-header-actions {
     display: flex;
     justify-content: center;

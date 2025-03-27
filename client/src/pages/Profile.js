@@ -10,11 +10,11 @@ function Profile() {
             <ProfileHeader />
             <div className="profile-content">
                 <h1 className="title">Favorite✨</h1>
-                <ProfileCardCarrusel />
+                <ProfileCardCarrusel favorite={true} />
             </div>
             <div className="profile-content">
                 <h1 className="title">All templates</h1>
-                <ProfileCardCarrusel />
+                <ProfileCardCarrusel favorite={false} />
             </div>
         </div>
     );

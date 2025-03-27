@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './LoginForm.css';
-import axios from 'axios';
+import api from '../../api';
 
 function Login() {
 
@@ -33,7 +33,7 @@ function Login() {
         if (!validateForm()) return;
 
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+            const response = await api.post('auth/login', formData);
             const now = new Date()
             const item = {
                 value: response.data.token,

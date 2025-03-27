@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './HomeMainContent.css';
 import { IonIcon } from '@ionic/react';
 import { search } from 'ionicons/icons';
-import axios from 'axios';
 import Card from '../Card/Card';
+import api from '../../api';
 
 function MainContent() {
 
@@ -15,7 +15,7 @@ function MainContent() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/template/');
+                const response = await api.get('template/');
                 setCards(response.data);
             } catch (error) {
                 setError(error);
