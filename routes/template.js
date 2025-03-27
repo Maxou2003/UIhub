@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router();
 const templateController = require('../controllers/templateController');
 const auth = require('../middleware/auth');
+const is_owner = require('../middleware/is_owner');
 
 router.get('/', templateController.getTemplates);
 router.get('/:id', templateController.getTemplateWithId);
-router.put('/', auth, templateController.uptadeTemplate);
+router.put('/', auth, is_owner, templateController.uptadeTemplate);
 router.post('/', auth, templateController.saveTemplate);
-router.delete('/', auth, templateController.deleteTemplate);
+router.delete('/', auth, is_owner, templateController.deleteTemplate);
 
 
 module.exports = router;

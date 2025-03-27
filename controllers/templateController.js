@@ -34,7 +34,7 @@ exports.uptadeTemplate = (req, res) => {
     delete req.body.id;
     Template.findOneAndUpdate(id, req.body)
         .then(() => res.status(200).json({message: 'Template updated'}))
-        .catch(error => res.status(400).josn({ error}));
+        .catch(error => res.status(400).json({ error}));
 }
 
 exports.deleteTemplate = (req, res) => {

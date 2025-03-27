@@ -5,6 +5,8 @@ const auth = require('../middleware/auth');
 
 router.get('/', auth, profileController.getProfile);
 router.get('/banner', auth, profileController.getBanner);
-router.get('/image', auth, profileController.getBanner);
+router.get('/image', auth, profileController.getImage);
+router.put('/banner', auth, profileController.putBanner);
+router.put('/image', auth, profileController.putImage);
 
 module.exports = router;
