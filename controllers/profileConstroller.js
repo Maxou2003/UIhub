@@ -6,13 +6,13 @@ exports.getProfile = (req,res) => {
     let all;
     let name;
 
-    Template.find({owner: req.auth, favorite: true })
+    Template.find({owner: req.auth.userId, favorite: true })
         .then(fav => fav = favorite)
         .catch(error => res.status(400).json({ error}));
-    Template.find({owner: req.auth})
+    Template.find({owner: req.auth.userId})
         .then(others => all = others)
         .catch(error => res.status(400).json({ error}));
-    User.findOne({_id: req.auth})
+    User.findOne({_id: req.auth.userId})
         .then(u => name = u.username)
         .catch(error => res.status(400).json({ error}));
     
@@ -20,13 +20,13 @@ exports.getProfile = (req,res) => {
 }
 
 exports.getBanner = (req, res) => {
-    User.findOne({_id: req.auth})
+    User.findOne({_id: req.auth.userId})
     .then(u => res.sendFile(path.join(__dirname, u.banner_image)))
         .catch(error => res.status(400).json({ error}));
 }
 
 exports.getImage = (req, res) => {
-    User.findOne({_id: req.auth})
+    User.findOne({_id: req.auth.userId})
         .then(u => res.sendFile(path.join(__dirname, u.profile_image)))
         .catch(error => res.status(400).json({ error}));
 }
