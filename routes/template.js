@@ -5,9 +5,9 @@ const auth = require('../middleware/auth');
 
 router.get('/', templateController.getTemplates);
 router.get('/:id', templateController.getTemplateWithId);
-router.put('/', templateController.uptadeTemplate);
-router.post('/', templateController.saveTemplate);
-router.delete('/', templateController.deleteTemplate);
+router.put('/', auth, templateController.uptadeTemplate);
+router.post('/', auth, templateController.saveTemplate);
+router.delete('/', auth, templateController.deleteTemplate);
 
 
 module.exports = router;
