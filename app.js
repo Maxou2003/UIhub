@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user');
 const templateRoutes = require('./routes/template');
+const profileRoutes = require('./routes/profile.js');
 
 mongoose.connect('mongodb+srv://Maxou:Maxou*Dbpassword@cluster0.4uqax.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
     {
@@ -25,6 +26,7 @@ app.use((req, res, next) => {
 
 app.use('/api/auth', userRoutes);
 app.use('/api/template', templateRoutes),
+app.use('/profile', profileRoutes)
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 module.exports = app;

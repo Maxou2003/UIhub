@@ -8,6 +8,7 @@ const userSchema = mongoose.Schema({
     css: { type: String, required: true },
     owner: {type: Number, required: true},
     public: {type: Boolean, require: true},
+    favorite: {type: Boolean, default: false},
 
 });
 
