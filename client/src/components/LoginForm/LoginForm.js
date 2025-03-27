@@ -34,8 +34,12 @@ function Login() {
 
         try {
             const response = await axios.post('http://localhost:5000/api/auth/login', formData);
-            localStorage.setItem('token', response.data.token);
-            localStorage.setItem('user', JSON.stringify(response.data.userId));
+            const now = new Date()
+            const item = {
+                value: response.data.token,
+                expiry: now.getTime() + 86400,
+            }
+            localStorage.setItem('key', JSON.stringify(item));
             window.location.href = '/';
         } catch (error) {
             console.error('Error submitting form:', error);
