@@ -7,6 +7,9 @@ function ConnexionBtn() {
         localStorage.removeItem('key');
         localStorage.clear();
     }
+    if (localStorage.getItem('key') && (JSON.parse(localStorage.getItem('key')).expiry < new Date().getTime())) {
+        handleLogOut();
+    }
 
     if (localStorage.getItem('key') === null) {
 

@@ -1,7 +1,7 @@
 .main-content {
     padding-top: 100px;
     text-align: center;
-    color: white;
+    color: var(--text-color);
 }
 
 .main-content h1 {
@@ -10,7 +10,8 @@
 
 .main-content p {
     font-size: 40px;
-    color: rgba(220, 221, 203, 0.864);
+    color: var(--secondary-text-color);
+    /* color: var(--text-color-light); */
 }
 
 
@@ -56,7 +57,8 @@
 }
 
 .typewriter h1 {
-    color: #fff;
+    /* color: #fff; */
+    color: var(--primary-text-color);
     font-family: monospace;
     overflow: hidden;
     /* Ensures the content is not revealed until the animation */
@@ -69,7 +71,7 @@
     letter-spacing: .15em;
     /* Adjust as needed */
     animation:
-        typing 8s steps(30, end) infinite,
+        typing 15s steps(16, end) infinite,
         blink-caret .75s step-end infinite;
 }
 
@@ -107,6 +109,6 @@
     }
 
     50% {
-        border-color: #cdcdcd;
+        border-color: var(--btn-color);
     }
 }

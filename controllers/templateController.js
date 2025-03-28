@@ -30,16 +30,16 @@ exports.saveTemplate = (req, res) => {
 }
 
 exports.uptadeTemplate = (req, res) => {
-    const id = {_id: req.body.id};
+    const id = { _id: req.body.id };
     delete req.body.id;
     Template.findOneAndUpdate(id, req.body)
-        .then(() => res.status(200).json({message: 'Template updated'}))
-        .catch(error => res.status(400).json({ error}));
+        .then(() => res.status(200).json({ message: 'Template updated' }))
+        .catch(error => res.status(400).json({ error }));
 }
 
 exports.deleteTemplate = (req, res) => {
-    Template.deleteOne({_id: req.body.id})
-        .then(() => res.status(200).json({message: "Template deleted"}))
-        .catch(error => res.status(401).json({ error}));
+    Template.deleteOne({ _id: req.body.id })
+        .then(() => res.status(200).json({ message: "Template deleted" }))
+        .catch(error => res.status(401).json({ error }));
 
 }

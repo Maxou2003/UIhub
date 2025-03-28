@@ -1,12 +1,18 @@
 :root {
-    --background-color: rgb(1, 22, 56);
-    --navbar-color: #2c3d5c;
+    --background-color: #F8F9FA;
+    --navbar-color: #FFFFFF;
     --box-shadow-color: rgba(0, 0, 0, 0.1);
-    --btn-color: rgb(167, 139, 250);
+    --btn-color: rgb(136, 106, 225);
+    --primary-text-color: #2B2D42;
+    --secondary-text-color: #4A4E69;
+    --text-color: #000;
+    --text-color-light: #9f9f9f;
 }
 
 
 
 body {
     background-color: var(--background-color);
+    /* background: linear-gradient(135deg, #6A0DAD 0%, #00B4D8 100%); */
+    color: var(--primary-text-color);
 }

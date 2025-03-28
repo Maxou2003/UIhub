@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './LoginForm.css';
-import api from '../../api';
+import api from '../../../api';
 
 function Login() {
 
@@ -37,7 +37,7 @@ function Login() {
             const now = new Date()
             const item = {
                 value: response.data.token,
-                expiry: now.getTime() + 86400,
+                expiry: now.getTime() + 86400000,
             }
             localStorage.setItem('key', JSON.stringify(item));
             window.location.href = '/';

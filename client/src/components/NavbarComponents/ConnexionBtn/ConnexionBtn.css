@@ -74,3 +74,11 @@
     flex-direction: row;
     column-gap: 1vh;
 }
+
+.login-btn {
+    color: var(--btn-color);
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}

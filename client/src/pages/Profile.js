@@ -1,7 +1,7 @@
 import React from 'react';
 import './css/Profile.css';
-import ProfileHeader from '../components/ProfileHeader/ProfileHeader';
-import ProfileCardCarrusel from '../components/ProfileCardCarrusel/ProfileCardCarrusel';
+import ProfileHeader from '../components/ProfileComponents/ProfileHeader/ProfileHeader';
+import ProfileCardCarrusel from '../components/ProfileComponents/ProfileCardCarrusel/ProfileCardCarrusel';
 
 
 function Profile() {

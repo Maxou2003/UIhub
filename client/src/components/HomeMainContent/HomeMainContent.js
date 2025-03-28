@@ -17,6 +17,7 @@ function MainContent() {
             try {
                 const response = await api.get('template/');
                 setCards(response.data);
+                console.log(response.data.templates);
             } catch (error) {
                 setError(error);
             } finally {
@@ -40,11 +41,11 @@ function MainContent() {
         <div className="main-content">
             <div className="mycontainer">
                 <div className="typewriter">
-                    <h1>Welcome to UIhub</h1>
+                    <h1>Welcome to UIHub</h1>
+                    <p className="subtitle">Explore our amazing features and designs!</p>
                 </div>
             </div>
 
-            <p>Explore our amazing features and designs!</p>
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-5">
