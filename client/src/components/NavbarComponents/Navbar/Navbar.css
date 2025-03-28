@@ -32,7 +32,6 @@ a {
 }
 
 .nav-item span {
-    /* color: var(--btn-color); */
     color: var(--text-color);
     font-size: 18px;
     font-weight: 500;
@@ -44,26 +43,15 @@ ion-icon {
     margin-right: 1vh;
 }
 
-.nav-item span:hover {
-    color: #CDCDCD;
+.nav-item:hover {
+    background-color: var(--btn-hover-color);
+    border-bottom: 4px solid var(--btn-color);
 }
 
 .navbar .nav-item {
-    /* color: var(--btn-color) */
     color: var(--text-color);
+    padding: 0.5rem;
     justify-content: center;
     align-items: center;
     display: flex;
-}
-
-.login-btn {
-    background-color: transparent;
-    transition: ease 0.3s;
-    border: 1px solid var(--background-color);
-    height: 7.5vh;
-    width: 18vh;
-    padding: 0.7em 1.7em;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 0.5em;
 }

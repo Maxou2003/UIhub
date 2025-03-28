@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './css/Template.css';
 import TemplateVisualization from '../components/TemplateComponents/TemplateVisualization/TemplateVisualization';
+import TemplateHeader from '../components/TemplateComponents/TemplateHeader/TemplateHeader';
 import { useParams } from "react-router"
 import api from '../api';
 import { useEffect } from 'react';
@@ -11,6 +12,8 @@ function Template() {
 
     let { id } = useParams();
     const [template, setTemplate] = useState({});
+    const [label, setLabel] = useState({});
+    const [user, setUser] = useState({});
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -18,6 +21,8 @@ function Template() {
             try {
                 const response = await api.get(`template/${id}`);
                 setTemplate(response.data.template);
+                setLabel(response.data.template.label);
+                setUser(response.data.template.owner);
             } catch (error) {
                 console.error('Error fetching template:', error);
             } finally {
@@ -31,13 +36,8 @@ function Template() {
 
     return (
         <div className="template" style={{ paddingTop: '100px', justifyContent: 'center', alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
-            <div className="template-header">
-                <h1 className="template-title">Template Title</h1>
-                <p className="template-description">This my template id: {id}</p>
-            </div>
-            <div className="template-content">
-                {!loading && <TemplateVisualization htmlString={template.html} cssString={template.css} />}
-            </div>
+            {!loading && <TemplateHeader owner={user} label={label} />}
+            {!loading && <TemplateVisualization htmlString={template.html} cssString={template.css} />}
         </div>
     );
 }

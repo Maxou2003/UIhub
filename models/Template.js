@@ -3,12 +3,12 @@ const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
 const userSchema = mongoose.Schema({
-    label: {type: String, require: true},
-    html: { type: String, required: true},
+    label: { type: String, require: true },
+    html: { type: String, required: true },
     css: { type: String, required: true },
-    owner: {type: Number, required: true},
-    public: {type: Boolean, require: true},
-    favorite: {type: Boolean, default: false},
+    owner: { type: String, required: true },
+    public: { type: Boolean, require: true },
+    favorite: { type: Boolean, default: false },
 
 });
 

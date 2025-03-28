@@ -20,7 +20,8 @@ exports.getTemplateWithId = (req, res) => {
 }
 
 exports.saveTemplate = (req, res) => {
-    req.body.owner = parseInt(req.auth.userId);
+    // req.body.owner = parseInt(req.auth.userId);
+    req.body.owner = req.auth.userId;
     const template = new Template({
         ...req.body
     });

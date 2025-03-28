@@ -75,10 +75,20 @@
     column-gap: 1vh;
 }
 
+
 .login-btn {
-    color: var(--btn-color);
-    font-size: 18px;
-    font-weight: 500;
+    background-color: transparent;
+    transition: ease 0.3s;
+    border: 1px solid var(--box-shadow-color);
+    height: 7.5vh;
+    width: 18vh;
+    padding: 0.7em 1.7em;
     cursor: pointer;
-    transition: color 0.3s ease;
+    font-size: 18px;
+    border-radius: 0.5em;
+}
+
+.ConnexionBtnContainer .nav-item {
+    padding: 0;
+    border-bottom: none;
 }

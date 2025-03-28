@@ -17,7 +17,6 @@ function MainContent() {
             try {
                 const response = await api.get('template/');
                 setCards(response.data);
-                console.log(response.data.templates);
             } catch (error) {
                 setError(error);
             } finally {

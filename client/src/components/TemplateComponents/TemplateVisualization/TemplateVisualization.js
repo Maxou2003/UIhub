@@ -9,7 +9,6 @@ function TemplateVisualization({ htmlString, cssString }) {
     const [activeTab, setActiveTab] = useState('html');
     const [codeContent, setCodeContent] = useState(htmlString);
 
-    console.log(htmlString, cssString);
     const iframeContent = `
     <!DOCTYPE html>
     <html style="height:100%">

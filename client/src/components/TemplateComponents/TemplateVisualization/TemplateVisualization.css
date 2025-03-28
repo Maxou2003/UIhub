@@ -1,6 +1,11 @@
 .template-visualization {
     display: flex;
     flex-direction: row;
+    border: 1px solid var(--box-shadow-color);
+    border-radius: 15px;
+    background-color: var(--navbar-color);
+    width: 140lvh;
+    height: 60lvh;
 }
 
 .template-preview {
@@ -22,6 +27,7 @@
     padding-left: 1rem;
     padding-right: 1rem;
     background-color: #fafafa;
+    border-top-right-radius: 15px;
 }
 
 .template-code-decider button {
