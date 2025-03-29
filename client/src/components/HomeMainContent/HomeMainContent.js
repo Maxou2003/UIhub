@@ -20,7 +20,7 @@ function MainContent() {
             } catch (error) {
                 setError(error);
             } finally {
-                setLoading(false); // Set loading to false after the request completes
+                setLoading(false);
             }
         };
 
@@ -58,7 +58,7 @@ function MainContent() {
 
             <div className="card-gallery">
                 {cards.templates.map((card, index) => (
-                    <Card key={index} htmlString={card.html} cssString={card.css} />
+                    <Card key={index} htmlString={card.html} cssString={card.css} id={card._id} />
                 ))}
             </div>
         </div>
