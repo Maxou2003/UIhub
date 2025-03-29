@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './css/Template.css';
 import TemplateVisualization from '../components/TemplateComponents/TemplateVisualization/TemplateVisualization';
 import TemplateHeader from '../components/TemplateComponents/TemplateHeader/TemplateHeader';
 import { useParams } from "react-router"

@@ -8,12 +8,13 @@
     --text-color: #000;
     --text-color-light: #9f9f9f;
     --btn-hover-color: #e4e7ea;
+    --bg-gradient-start: #f5f7fa;
+    --bg-gradient-end: #c3cfe2;
 }
 
 
 
 body {
     background-color: var(--background-color);
-    /* background: linear-gradient(135deg, #6A0DAD 0%, #00B4D8 100%); */
     color: var(--primary-text-color);
 }
