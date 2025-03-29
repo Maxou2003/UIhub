@@ -4,7 +4,6 @@ var mongoose = require('mongoose');
 const path = require('path');
 
 exports.getProfile = (req, res) => {
-
     Template.find({ owner: req.auth.userId, favorite: true })
         .then(fav => {
             Template.find({ owner: req.auth.userId })
@@ -57,3 +56,35 @@ exports.putImage = (req, res) => {
                     .catch(error => res.status(400).json({ error }));
         }).catch(error => res.status(400).json({ error }));
 }
+
+exports.getOtherBanner = (req, res) => {
+    User.findOne({ _id: new mongoose.Types.ObjectId(req.params.user) })
+        .then(u => {
+            res.status(200).sendFile(path.join(path.dirname(__dirname), "images", u.banner_image))
+        })
+        .catch(error => res.status(401).json({ error }));
+}
+
+exports.getOtherImage = (req, res) => {
+    User.findOne({ _id: new mongoose.Types.ObjectId(req.params.user) })
+        .then(u => {
+            res.status(200).sendFile(path.join(path.dirname(__dirname), "images", u.profile_image))
+        })
+        .catch(error => res.status(401).json({ error }));
+}
+
+
+exports.getOtherProfile = (req, res) => {
+    Template.find({ owner: req.params.user, favorite: true, public: true})
+        .then(fav => {
+            Template.find({ owner: req.params.user, public: true })
+                .then(others => {
+                    User.findOne({ _id: new mongoose.Types.ObjectId(req.params.user) })
+                        .then(u => res.status(200).json({ username: u.username, favorite: fav, template: others }))
+                        .catch(error => res.status(401).json({ error }))
+                })
+                .catch(error => res.status(406).json({ error }))
+        })
+        .catch(error => res.status(407).json({ error }));
+}
+

@@ -6,8 +6,8 @@ const userSchema = mongoose.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     username: { type: String, require: true, unique: true },
-    profile_image: {type: String, require: false},
-    banner_image: {type: String, require: false},
+    profile_image: {type: String, default: "d_profile.png"},
+    banner_image: {type: String, default: "d_banner.png"},
 });
 
 userSchema.plugin(uniqueValidator);

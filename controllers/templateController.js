@@ -44,3 +44,15 @@ exports.deleteTemplate = (req, res) => {
         .catch(error => res.status(401).json({ error }));
 
 }
+
+
+exports.forkTemplate = (req, res) =>  {
+    Template.findOne({_id: req.params.id})
+        .then(template => {
+            template.owner = req.auth.userId;
+            template.save()
+                .then(() => res.status(200).json({message: "Template forked" }))
+                .catch(error => res.status(401).json({ error , message: "Can't save the template"}))
+        })
+        .catch(error => res.status(401).json({ error , message: "Can't find the template"}))
+}
