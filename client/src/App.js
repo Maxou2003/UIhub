@@ -7,6 +7,7 @@ import Navbar from './components/NavbarComponents/Navbar/Navbar';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import Template from './pages/Template';
+import NotFound from './pages/NotFound';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
         }
         <Route path="/template/:id" element={<Template />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
