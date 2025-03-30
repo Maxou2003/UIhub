@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { IonIcon } from '@ionic/react';
 import { chevronBack, chevronForward } from 'ionicons/icons';
 import Card from '../../Card/Card';
-import api from '../../../api';
+import api from '../../../utils/api';
 import './ProfileCardCarrusel.css';
 
 

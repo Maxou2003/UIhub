@@ -3,7 +3,7 @@ import './HomeMainContent.css';
 import { IonIcon } from '@ionic/react';
 import { search } from 'ionicons/icons';
 import Card from '../Card/Card';
-import api from '../../api';
+import api from '../../utils/api';
 
 function MainContent() {
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TemplateVisualization from '../components/TemplateComponents/TemplateVisualization/TemplateVisualization';
 import TemplateHeader from '../components/TemplateComponents/TemplateHeader/TemplateHeader';
 import { useParams } from "react-router"
-import api from '../api';
+import api from '../utils/api';
 import { useEffect } from 'react';
 
 
@@ -35,7 +35,7 @@ function Template() {
 
     return (
         <div className="template" style={{ paddingTop: '100px', justifyContent: 'center', alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
-            {!loading && <TemplateHeader owner={user} label={label} />}
+            {!loading && <TemplateHeader owner={user} label={label} id={id} />}
             {!loading && <TemplateVisualization htmlString={template.html} cssString={template.css} />}
         </div>
     );

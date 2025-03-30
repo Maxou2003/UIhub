@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './ProfileHeader.css';
-import api from '../../../api';
+import api from '../../../utils/api';
 
 function ProfileHeader() {
 
