@@ -37,7 +37,7 @@ function Template() {
 
     return (
         <div className="template" style={{ paddingTop: '100px', justifyContent: 'center', alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
-            {!loading && <TemplateHeader owner={user} label={label} id={id} favorite={favorite} />}
+            {!loading && <TemplateHeader template={template} />}
             {!loading && <TemplateVisualization htmlString={template.html} cssString={template.css} />}
         </div>
     );
