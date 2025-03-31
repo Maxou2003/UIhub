@@ -103,25 +103,23 @@ function ProfileHeader() {
 
     const handleSubmit = async () => {
         setIsSubmitting(true);
-        try {
-            const formData = new FormData();
+        const formData = new FormData();
 
-            if (editUsername !== username) {
-                formData.append('username', editUsername);
-            }
-            if (newProfileImage) {
-                formData.append('profileImage', newProfileImage);
-            }
-            if (newBannerImage) {
-                formData.append('bannerImage', newBannerImage);
-            }
+        if (editUsername !== username) {
+            formData.append('username', editUsername);
+        }
+        if (newProfileImage) {
+            formData.append('profileImage', newProfileImage);
+        }
+        if (newBannerImage) {
+            formData.append('bannerImage', newBannerImage);
+        }
 
-            await api.put('profile/', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-
+        await api.put('profile/', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then(() => {
             setUsername(editUsername);
             if (newProfileImage) {
                 setProfileImage(profilePreview);
@@ -131,11 +129,11 @@ function ProfileHeader() {
             }
 
             setShowEditModal(false);
-        } catch (error) {
-            console.error("profileheader", 'Error updating profile:', error);
-        } finally {
             setIsSubmitting(false);
-        }
+        }).catch((error) => {
+            console.error("profileheader", 'Error updating profile:', error);
+            setIsSubmitting(false);
+        });
     };
 
     const handleClose = () => {

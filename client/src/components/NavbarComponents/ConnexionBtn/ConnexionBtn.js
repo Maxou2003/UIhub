@@ -24,7 +24,7 @@ function ConnexionBtn({ onLogin }) {
                 <Link to="/" className="nav-item">
                     <button className="button2 create-btn">
                         <IonIcon icon={add} className="create-icon" />
-                        Create
+                        <span>Create</span>
                     </button>
                 </Link>
             </div>

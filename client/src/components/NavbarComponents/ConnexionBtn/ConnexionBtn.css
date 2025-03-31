@@ -102,6 +102,11 @@
     gap: 8px;
 }
 
+.create-btn span {
+    color: #ffffff;
+    margin-right: 0.4em;
+}
+
 .create-icon {
     color: inherit;
     font-size: 20px;

@@ -75,7 +75,7 @@ exports.getOtherImage = (req, res) => {
 
 
 exports.getOtherProfile = (req, res) => {
-    Template.find({ owner: req.params.user, favorite: true, public: true})
+    Template.find({ owner: req.params.user, favorite: true, public: true })
         .then(fav => {
             Template.find({ owner: req.params.user, public: true })
                 .then(others => {
@@ -89,7 +89,6 @@ exports.getOtherProfile = (req, res) => {
 }
 
 exports.putProfile = (req, res) => {
-    console.log(req);
-    res.status(200).json({message:"ok"});
+    res.status(200).json({ message: "ok" });
 }
 
