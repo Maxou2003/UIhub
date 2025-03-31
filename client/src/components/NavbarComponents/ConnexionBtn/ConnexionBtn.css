@@ -11,8 +11,10 @@
     border-radius: 0.5em;
     background: linear-gradient(to right, #8e2de2, #4a00e0);
     border: 1px solid #e8e8e8;
-    height: 7.5vh;
-    width: 18vh;
+    height: 3em;
+    width: 6em;
+    max-height: 100px;
+    max-width: 150px;
     justify-content: center;
     align-items: center;
 }
