@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const uniqueValidator = require('mongoose-unique-validator');
 
-const userSchema = mongoose.Schema({
+const templateSchema = mongoose.Schema({
     label: { type: String, require: true },
     html: { type: String, required: true },
     css: { type: String, required: true },
@@ -12,6 +12,6 @@ const userSchema = mongoose.Schema({
 
 });
 
-userSchema.plugin(uniqueValidator);
+templateSchema.plugin(uniqueValidator);
 
-module.exports = mongoose.model('Template', userSchema);
+module.exports = mongoose.model('Template', templateSchema);
