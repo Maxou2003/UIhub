@@ -102,9 +102,9 @@
 .profile-header-button {
     height: 3em;
     border-radius: 0.5em;
-    background-color: var(--btn-color);
+    background: linear-gradient(to right, #8e2de2, #4a00e0);
+    border: transparent;
     color: #ffffff;
-    font-weight: bolder;
 }
 
 .profile-edit-modal .modal-content {

@@ -6,7 +6,6 @@ import { Modal, Button } from 'react-bootstrap';
 function ProfileHeader() {
 
     const [loadingHeaderTxt, setLoadingHeaderTxt] = useState(true);
-    const [error, setError] = useState(null);
 
     const [username, setUsername] = useState('');
     const [banner, setBanner] = useState('');
@@ -33,7 +32,7 @@ function ProfileHeader() {
                 setEditUsername(response.data.username);
                 setNbTemplates(response.data.template.length);
             } catch (error) {
-                setError(error);
+                console.error("profileheader", error);
             } finally {
                 setLoadingHeaderTxt(false);
             }
@@ -52,7 +51,7 @@ function ProfileHeader() {
                 setBanner(`data:image/png;base64,${base64}`);
                 setBannerPreview(`data:image/png;base64,${base64}`);
             } catch (error) {
-                setError(error);
+                console.error("profileheader", error);
             }
         };
 
@@ -69,7 +68,7 @@ function ProfileHeader() {
                 setProfileImage(`data:image/png;base64,${base64}`);
                 setProfilePreview(`data:image/png;base64,${base64}`);
             } catch (error) {
-                setError(error);
+                console.error("profileheader", error);
             }
         };
 
@@ -133,7 +132,7 @@ function ProfileHeader() {
 
             setShowEditModal(false);
         } catch (error) {
-            console.error('Error updating profile:', error);
+            console.error("profileheader", 'Error updating profile:', error);
         } finally {
             setIsSubmitting(false);
         }
