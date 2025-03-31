@@ -54,7 +54,13 @@ exports.getuserbyid = (req, res) => {
     User.findOne({ _id: req.params.id })
         .then(user => res.status(200).json({ user }))
         .catch(error => {
-            console.log("error in controller")
             res.status(401).json(error)
+        });
+}
+exports.getloggeduser = (req, res) => {
+    User.findOne({ _id: req.auth.userId })
+        .then(user => res.status(200).json({ user }))
+        .catch(error => {
+            res.status(402).json(error)
         });
 }
