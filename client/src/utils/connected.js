@@ -1,9 +1,13 @@
-var connected = false;
+export function isConnected() {
+    const key = localStorage.getItem('key');
+    if (!key) return false;
 
-if (localStorage.getItem('key') == null || JSON.parse(localStorage.getItem('key')).expiry < new Date().getTime()) {
-    connected = false;
-} else {
-    connected = true;
+    try {
+        const parsedKey = JSON.parse(key);
+        return parsedKey.expiry > Date.now();
+    } catch (e) {
+        return false;
+    }
 }
 
-export default connected;
+export default isConnected();

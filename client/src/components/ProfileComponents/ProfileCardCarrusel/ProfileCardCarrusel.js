@@ -28,6 +28,7 @@ function ProfileCardCarroussel({ favorite }) {
 
             } catch (error) {
                 setError(error);
+                console.error("ProfileCarrousel error", error);
             } finally {
                 setLoading(false);
             }

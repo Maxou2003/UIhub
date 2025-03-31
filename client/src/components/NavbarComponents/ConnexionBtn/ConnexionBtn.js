@@ -1,38 +1,34 @@
 import React from 'react';
 import './ConnexionBtn.css';
+import { IonIcon } from '@ionic/react';
+import { add } from 'ionicons/icons';
+import { isConnected } from '../../../utils/connected'
+import { Link } from 'react-router-dom';
 
-function ConnexionBtn() {
+function ConnexionBtn({ onLogin }) {
 
-    const handleLogOut = () => {
-        localStorage.removeItem('key');
-        localStorage.clear();
-    }
-    if (localStorage.getItem('key') && (JSON.parse(localStorage.getItem('key')).expiry < new Date().getTime())) {
-        handleLogOut();
-    }
-
-    if (localStorage.getItem('key') === null) {
-
+    if (!isConnected()) {
         return (
             <div className='ConnexionBtnContainer'>
-                <a href="/login" className="nav-item">
-                    <button className="login-btn"> Log In </button>
-                </a>
-                <a href="/signup" className="nav-item">
+                <Link to="/login" className="nav-item" onClick={onLogin}>
+                    <button className="login-btn">Log In</button>
+                </Link>
+                <Link to="/signup" className="nav-item">
                     <button className="button2">Sign Up</button>
-                </a>
+                </Link>
             </div>
         );
-
     } else {
         return (
             <div className='ConnexionBtnContainer'>
-                <a href="/" className="nav-item">
-                    <button className="button2" onClick={handleLogOut}>Log out</button>
-                </a>
-            </div >
+                <Link to="/" className="nav-item">
+                    <button className="button2 create-btn">
+                        <IonIcon icon={add} className="create-icon" />
+                        Create
+                    </button>
+                </Link>
+            </div>
         );
     }
-
 }
 export default ConnexionBtn;
