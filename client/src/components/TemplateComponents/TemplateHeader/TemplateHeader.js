@@ -1,19 +1,22 @@
 import './TemplateHeader.css';
 import React, { use, useState } from 'react';
 import { IonIcon } from '@ionic/react';
-import { arrowBack } from 'ionicons/icons';
+import { arrowBack, star, starOutline } from 'ionicons/icons';
 import Modal from 'react-bootstrap/Modal'
 import api from '../../../utils/api';
 import { isConnected } from '../../../utils/connected';
 import { useEffect } from 'react';
 
-function TemplateHeader({ owner, label, id, favorite }) {
+function TemplateHeader({ template: initialTemplate }) {
 
     const [user, setUser] = useState({});
     const [loggedUser, setLoggedUser] = useState({});
     const [profileImage, setProfileImage] = useState('');
+    const [template, setTemplate] = useState(initialTemplate);
+
     const [show, setShow] = useState(false);
     const [modalContent, setModalContent] = useState('');
+
 
     const [loadingUserInfo, setLoadingUserInfo] = useState(true);
     const [loadingLoggedUserInfo, setLoadingLoggedUserInfo] = useState(true);
@@ -22,7 +25,7 @@ function TemplateHeader({ owner, label, id, favorite }) {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await api.get(`auth/${owner}`);
+                const response = await api.get(`auth/${template.owner}`);
                 setUser(response.data.user);
             } catch (error) {
                 console.error('Error fetching user:', error);
@@ -32,7 +35,7 @@ function TemplateHeader({ owner, label, id, favorite }) {
         };
         const fetchProfileImage = async () => {
             try {
-                const response = await api.get(`/profile/image/${owner}`, {
+                const response = await api.get(`/profile/image/${template.owner}`, {
                     responseType: 'arraybuffer'
                 });
 
@@ -65,7 +68,7 @@ function TemplateHeader({ owner, label, id, favorite }) {
     }, []);
 
     const handleFork = () => {
-        const forkRequest = api.put(`/template/fork/${id}`)
+        const forkRequest = api.put(`/template/fork/${template._id}`)
             .then(() => {
                 setModalContent('Your template has been forked successfully !');
                 setShow(true);
@@ -76,6 +79,25 @@ function TemplateHeader({ owner, label, id, favorite }) {
                 setShow(true);
             });
     }
+
+    const handleFavoriteToggle = async () => {
+        try {
+            const newFavoriteStatus = !template.favorite;
+            setTemplate(prev => ({ ...prev, favorite: newFavoriteStatus }));
+
+            await api.put(`/template`, {
+                ...template,
+                favorite: newFavoriteStatus
+            });
+
+        } catch (error) {
+            console.log(error);
+            setTemplate(prev => ({ ...prev, favorite: !template.favorite }));
+        }
+    };
+
+
+
     const handleClose = () => {
         setShow(false);
     }
@@ -133,7 +155,7 @@ function TemplateHeader({ owner, label, id, favorite }) {
                 <IonIcon icon={arrowBack} /> Go Back
             </button>
             <div className='template-right-side'>
-                {!loadingUserInfo && !loadingProfileImage && < div className="header-credits">{label} by
+                {!loadingUserInfo && !loadingProfileImage && < div className="header-credits">{template.label} by
                     <button className="header-profile-button" onClick={() => window.location.href = `/profile/${user._id}`}>
                         <div className="header-profile-image-container">
                             <img className="header-profile-image" src={profileImage} alt="Profile" />
@@ -141,7 +163,7 @@ function TemplateHeader({ owner, label, id, favorite }) {
                         {user.username}
                     </button>
                 </div>}
-                {isConnected() && !loadingLoggedUserInfo && loggedUser._id != owner && < button className='fork-btn' onClick={handleFork}><span><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                {isConnected() && !loadingLoggedUserInfo && loggedUser._id != template.owner && < button className='fork-btn' onClick={handleFork}><span><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 0h24v24H0z" fill="none"></path>
                     <path
                         d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z"
@@ -149,8 +171,21 @@ function TemplateHeader({ owner, label, id, favorite }) {
                     ></path>
                 </svg>
                     Fork</span></button>}
-                {loggedUser._id == owner && !favorite && <button className='fork-btn'> <span>Add to favorite ✨</span></button>}
 
+                {/* {loggedUser._id == template.owner && !template.favorite &&
+                    <button className='fork-btn' onClick={handleFavoriteToggle}> <span>Add to favorite ✨</span></button>}
+
+                {loggedUser._id == template.owner && template.favorite &&
+                    <button className='fork-btn' onClick={handleFavoriteToggle}> <span>Remove from favorite</span></button>} */}
+                {loggedUser._id == template.owner && (
+                    <button
+                        className={`favorite-star-btn ${template.favorite ? 'favorite' : ''}`}
+                        onClick={handleFavoriteToggle}
+                        aria-label={template.favorite ? 'Remove from favorites' : 'Add to favorites'}
+                    >
+                        <IonIcon icon={template.favorite ? star : starOutline} />
+                    </button>
+                )}
             </div>
         </div >
     );

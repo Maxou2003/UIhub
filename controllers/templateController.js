@@ -31,8 +31,8 @@ exports.saveTemplate = (req, res) => {
 }
 
 exports.uptadeTemplate = (req, res) => {
-    const id = { _id: req.body.id };
-    delete req.body.id;
+    const id = { _id: req.body._id };
+    delete req.body._id;
     Template.findOneAndUpdate(id, req.body)
         .then(() => res.status(200).json({ message: 'Template updated' }))
         .catch(error => res.status(400).json({ error }));
@@ -46,29 +46,29 @@ exports.deleteTemplate = (req, res) => {
 }
 
 
-exports.forkTemplate = (req, res) =>  {
-    Template.findOne({_id: req.params.id})
+exports.forkTemplate = (req, res) => {
+    Template.findOne({ _id: req.params.id })
         .then(template => {
             if (template.public == false) {
-                res.status(401).json({message: "Template must be in public"});
+                res.status(401).json({ message: "Template must be in public" });
                 return;
             }
-            if (req.auth.userId == template.owner){
-                res.status(401).json({message: "This template is already yours"});
+            if (req.auth.userId == template.owner) {
+                res.status(401).json({ message: "This template is already yours" });
                 return;
             }
             delete template._id;
             const n_template = new Template({
-                html:template.html,
-                css:template.css,
-                owner:req.auth.userId,
-                label:template.label,
-                public:true,
-                favorite:false,
+                html: template.html,
+                css: template.css,
+                owner: req.auth.userId,
+                label: template.label,
+                public: true,
+                favorite: false,
             });
             n_template.save()
-                .then(() => res.status(200).json({message: "Template forked" }))
-                .catch(error => res.status(401).json({ error , message: "Can't save the template"}))
+                .then(() => res.status(200).json({ message: "Template forked" }))
+                .catch(error => res.status(401).json({ error, message: "Can't save the template" }))
         })
-        .catch(error => res.status(401).json({ error , message: "Can't find the template"}))
+        .catch(error => res.status(401).json({ error, message: "Can't find the template" }))
 }

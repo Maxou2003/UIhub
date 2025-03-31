@@ -7,7 +7,7 @@ router.post('/signup', userController.signup);
 router.post('/login', userController.login);
 router.get('/logged', auth, userController.getloggeduser);
 router.get('/', userController.getalluser);
-router.get('/:id', auth, userController.getuserbyid);
+router.get('/:id', userController.getuserbyid);
 
 
 
