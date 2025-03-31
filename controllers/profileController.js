@@ -88,3 +88,8 @@ exports.getOtherProfile = (req, res) => {
         .catch(error => res.status(407).json({ error }));
 }
 
+exports.putProfile = (req, res) => {
+    console.log(req);
+    res.status(200).json({message:"ok"});
+}
+
