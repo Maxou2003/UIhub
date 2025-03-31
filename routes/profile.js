@@ -11,5 +11,6 @@ router.put('/image', auth, profileController.putImage);
 router.get('/banner/:user', profileController.getOtherBanner);
 router.get('/image/:user', profileController.getOtherImage);
 router.get('/:user', profileController.getOtherProfile);
+router.put('/', auth,profileController.putProfile);
 
 module.exports = router;

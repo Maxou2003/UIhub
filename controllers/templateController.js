@@ -49,8 +49,24 @@ exports.deleteTemplate = (req, res) => {
 exports.forkTemplate = (req, res) =>  {
     Template.findOne({_id: req.params.id})
         .then(template => {
-            template.owner = req.auth.userId;
-            template.save()
+            if (template.public == false) {
+                res.status(401).json({message: "Template must be in public"});
+                return;
+            }
+            if (req.auth.userId == template.owner){
+                res.status(401).json({message: "This template is already yours"});
+                return;
+            }
+            delete template._id;
+            const n_template = new Template({
+                html:template.html,
+                css:template.css,
+                owner:req.auth.userId,
+                label:template.label,
+                public:true,
+                favorite:false,
+            });
+            n_template.save()
                 .then(() => res.status(200).json({message: "Template forked" }))
                 .catch(error => res.status(401).json({ error , message: "Can't save the template"}))
         })
