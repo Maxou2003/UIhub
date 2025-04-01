@@ -10,13 +10,13 @@ import { Link, useNavigate } from 'react-router-dom';
 function Navbar() {
     const [profileImage, setProfileImage] = useState(null);
     const [username, setUsername] = useState('Username');
+    const [userId, setUserId] = useState('');
     const [showSettings, setShowSettings] = useState(false);
     const [connected, setConnected] = useState(isConnected()); // Local state
     const settingsRef = useRef(null);
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Check connection status whenever localStorage changes
         const handleStorageChange = () => {
             setConnected(isConnected());
         };
@@ -49,6 +49,8 @@ function Navbar() {
             try {
                 const response = await api.get('profile/');
                 setUsername(response.data.username);
+                const ownerId = response.data.template[0].owner;
+                setUserId(ownerId);
             } catch (error) {
                 console.log(error);
             }
@@ -94,10 +96,10 @@ function Navbar() {
                     <IonIcon icon={home} />
                     <span> Home </span>
                 </Link>
-                <Link to="/profile" className="nav-item">
+                <a href={`/profile/${userId}`} className="nav-item">
                     <IonIcon icon={person} />
                     <span> Profile </span>
-                </Link>
+                </a>
                 <ConnexionBtn onLogin={() => setConnected(true)} />
                 {connected && (
                     <div
@@ -143,7 +145,7 @@ function Navbar() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

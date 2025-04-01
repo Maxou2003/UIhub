@@ -19,7 +19,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         {localStorage.getItem('key') && JSON.parse(localStorage.getItem('key')).value != null &&
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:id" element={<Profile />} />
         }
         <Route path="/template/:id" element={<Template />} />
         <Route path="*" element={<NotFound />} />

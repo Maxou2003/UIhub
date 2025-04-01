@@ -7,7 +7,7 @@ import './ProfileCardCarrusel.css';
 
 
 
-function ProfileCardCarroussel({ favorite, logged }) {
+function ProfileCardCarroussel({ favorite, logged, isOwner, id }) {
 
     const [cards, setCards] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -17,9 +17,10 @@ function ProfileCardCarroussel({ favorite, logged }) {
 
 
     useEffect(() => {
+        const endOfUrl = isOwner ? '' : id;
         const fetchData = async () => {
             try {
-                const response = await api.get('profile/');
+                const response = await api.get(`profile/${endOfUrl}`);
                 if (favorite) {
                     setCards(response.data.favorite);
                 } else {

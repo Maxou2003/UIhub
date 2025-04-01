@@ -3,7 +3,7 @@ import './ProfileHeader.css';
 import api from '../../../utils/api';
 import { Modal, Button } from 'react-bootstrap';
 
-function ProfileHeader() {
+function ProfileHeader({ isOwner, id }) {
 
     const [loadingHeaderTxt, setLoadingHeaderTxt] = useState(true);
 
@@ -25,9 +25,11 @@ function ProfileHeader() {
     const bannerInputRef = useRef();
 
     useEffect(() => {
+
+        const endOfUrl = isOwner ? '' : id;
         const fetchProfileHeaderInfo = async () => {
             try {
-                const response = await api.get('profile/');
+                const response = await api.get(`profile/${endOfUrl}`);
                 setUsername(response.data.username);
                 setEditUsername(response.data.username);
                 setNbTemplates(response.data.template.length);
@@ -40,7 +42,7 @@ function ProfileHeader() {
 
         const fetchBanner = async () => {
             try {
-                const response = await api.get('profile/banner', {
+                const response = await api.get(`profile/banner/${endOfUrl}`, {
                     responseType: 'arraybuffer'
                 });
                 const base64 = btoa(
@@ -57,7 +59,7 @@ function ProfileHeader() {
 
         const fetchProfileImage = async () => {
             try {
-                const response = await api.get('profile/image', {
+                const response = await api.get(`profile/image/${endOfUrl}`, {
                     responseType: 'arraybuffer'
                 });
                 const base64 = btoa(
@@ -168,14 +170,16 @@ function ProfileHeader() {
                                     <p>{nbTemplates} templates</p>
                                 </div>
                             )}
-                            <div className="profile-header-actions">
-                                <button
-                                    className="profile-header-button"
-                                    onClick={() => setShowEditModal(true)}
-                                >
-                                    Edit Profile
-                                </button>
-                            </div>
+                            {isOwner &&
+                                <div className="profile-header-actions">
+                                    <button
+                                        className="profile-header-button"
+                                        onClick={() => setShowEditModal(true)}
+                                    >
+                                        Edit Profile
+                                    </button>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>

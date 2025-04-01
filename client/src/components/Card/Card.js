@@ -43,7 +43,6 @@ function Card({ htmlString, cssString, id, logged, owner }) {
       await api.delete('/template/', {
         data: { _id: id }
       });
-      console.log('Successfully deleted template with id:', id);
       setShowConfirmation(false);
       window.location.reload();
     } catch (error) {

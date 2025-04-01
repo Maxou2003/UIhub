@@ -47,7 +47,7 @@
 .template-code-content {
     height: 55lvh;
     position: relative;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .template-code-content textarea {
@@ -83,20 +83,11 @@
     gap: 0.5rem;
 }
 
-/* .save-btn:hover {
-    background-color: #45a049;
-}
-
-.save-btn:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-} */
 
 .cancel-btn {
     right: 40%;
     top: 80%;
     position: absolute;
-    /* display: flex; */
     padding: 0.7rem 1.8rem;
     border-radius: 50px;
     font-weight: 500;
@@ -109,15 +100,6 @@
     color: var(--btn-color);
     border: 2px solid var(--btn-color);
 }
-
-/* .cancel-btn:hover {
-    background-color: #af4c4c;
-}
-
-.cancel-btn:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-} */
 
 
 
