@@ -5,7 +5,7 @@ import { search } from 'ionicons/icons';
 import Card from '../Card/Card';
 import api from '../../utils/api';
 
-function MainContent() {
+function MainContent({ logged }) {
 
     const [cards, setCards] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -25,7 +25,7 @@ function MainContent() {
         };
 
         fetchData();
-    }, []); // Empty dependency array ensures this runs only once on mount
+    }, []);
 
     if (loading) {
         return <p>Loading...</p>;
@@ -58,7 +58,7 @@ function MainContent() {
 
             <div className="card-gallery">
                 {cards.templates.map((card, index) => (
-                    <Card key={index} htmlString={card.html} cssString={card.css} id={card._id} />
+                    <Card key={index} htmlString={card.html} cssString={card.css} id={card._id} logged={logged} owner={card.owner} />
                 ))}
             </div>
         </div>

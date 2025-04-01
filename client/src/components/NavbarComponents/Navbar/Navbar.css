@@ -41,7 +41,7 @@ a {
     transition: color 0.3s ease;
 }
 
-ion-icon {
+.navbar ion-icon {
     margin-right: 1vh;
 }
 

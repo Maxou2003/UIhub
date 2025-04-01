@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './SignupForm.css';
-import axios from 'axios';
+import api from '../../../utils/api';
 import { set } from "mongoose";
 
 function SignupForm() {
@@ -44,7 +44,7 @@ function SignupForm() {
         }
 
 
-        const response = await axios.post(`http://localhost:5000/api/auth/signup`, {
+        const response = await api.post(`/auth/signup`, {
             email: formData.email,
             password: formData.password,
             username: formData.username
@@ -52,6 +52,7 @@ function SignupForm() {
             .then((response) => {
                 console.log(response.data);
                 setLoading(false);
+                window.location.href = `/login/`;
             })
             .catch((error) => {
 

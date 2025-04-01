@@ -81,3 +81,108 @@
 .cssbuttons-io:active {
     transform: scale(0.95);
 }
+
+
+.card:hover .delete-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.delete-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.delete-btn:hover {
+    background: rgba(255, 77, 77, 0.9);
+    transform: scale(1.1);
+}
+
+.delete-btn:active {
+    transform: scale(0.95);
+}
+
+.red-trash-bin {
+    color: #ff4444;
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+}
+
+.delete-btn:hover .red-trash-bin {
+    color: white;
+}
+
+/* Confirmation modal styles */
+.delete-confirmation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.delete-confirmation-content {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.delete-confirmation-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.delete-confirm-btn {
+    background: #ff4444;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.delete-confirm-btn:hover {
+    background: #cc0000;
+    transform: translateY(-1px);
+}
+
+.delete-cancel-btn {
+    background: #f0f0f0;
+    color: #333;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.delete-cancel-btn:hover {
+    background: #e0e0e0;
+    transform: translateY(-1px);
+}

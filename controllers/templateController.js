@@ -39,12 +39,11 @@ exports.uptadeTemplate = (req, res) => {
 }
 
 exports.deleteTemplate = (req, res) => {
-    Template.deleteOne({ _id: req.body.id })
+    Template.deleteOne({ _id: req.body._id })
         .then(() => res.status(200).json({ message: "Template deleted" }))
         .catch(error => res.status(401).json({ error }));
 
 }
-
 
 exports.forkTemplate = (req, res) => {
     Template.findOne({ _id: req.params.id })
