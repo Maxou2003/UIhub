@@ -1,0 +1,129 @@
+.template-visualization {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid var(--box-shadow-color);
+    border-radius: 15px;
+    background-color: var(--navbar-color);
+    width: 140lvh;
+    height: 60lvh;
+}
+
+.template-preview {
+    border-right: 1px solid var(--box-shadow-color);
+    width: 50%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.template-code {
+    width: 50%;
+    height: 60lvh;
+}
+
+.template-code-decider {
+    flex-direction: row;
+    display: flex;
+    height: 2em;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: #fafafa;
+    border-top-right-radius: 15px;
+}
+
+.template-code-decider button {
+    border: 1px solid var(--box-shadow-color);
+    border-bottom: none;
+    border-radius: 4px;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    width: 8em;
+}
+
+.template-code-decider .active {
+    background: var(--navbar-color);
+}
+
+.template-code-content {
+    height: 55lvh;
+    position: relative;
+    overflow: hidden;
+}
+
+.template-code-content textarea {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    font-family: monospace;
+    font-size: 14px;
+    border: none;
+    resize: none;
+    outline: none;
+    background-color: var(--navbar-color);
+    white-space: pre;
+    overflow-x: auto;
+}
+
+.save-btn {
+    right: 3%;
+    top: 80%;
+    position: absolute;
+    margin-left: auto;
+    background: linear-gradient(to right, #8e2de2, #4a00e0);
+    color: white;
+    box-shadow: 0 4px 15px rgba(142, 45, 226, 0.3);
+    border: none;
+    padding: 0.7rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* .save-btn:hover {
+    background-color: #45a049;
+}
+
+.save-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+} */
+
+.cancel-btn {
+    right: 40%;
+    top: 80%;
+    position: absolute;
+    /* display: flex; */
+    padding: 0.7rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: var(--btn-color);
+    border: 2px solid var(--btn-color);
+}
+
+/* .cancel-btn:hover {
+    background-color: #af4c4c;
+}
+
+.cancel-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+} */
+
+
+
+.template-code-decider {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}

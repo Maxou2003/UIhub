@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TemplateVisualization from '../components/TemplateComponents/TemplateVisualization/TemplateVisualization';
+import EditableTemplateVisualization from '../components/TemplateComponents/EditableTemplateVisualization/EditableTemplateVisualization';
 import TemplateHeader from '../components/TemplateComponents/TemplateHeader/TemplateHeader';
 import { useParams } from "react-router"
 import api from '../utils/api';
@@ -15,6 +16,7 @@ function Template() {
     const [user, setUser] = useState({});
     const [favorite, setFavorite] = useState({});
     const [loading, setLoading] = useState(true);
+    const [edit, setEdit] = useState(false);
 
     useEffect(() => {
         const fetchTemplate = async () => {
@@ -34,11 +36,52 @@ function Template() {
         fetchTemplate();
     }, []);
 
+    const handleSave = async (updatedTemplate) => {
+        try {
+            const newtemplate = {
+                ...template,
+                html: updatedTemplate.html,
+                css: updatedTemplate.css
+            }
+            await api.put(`/template`, {
+                ...newtemplate
+            });
+        } catch (error) {
+            console.error(error);
+        } finally {
+            console.log('Edit mode off');
+            setTemplate(updatedTemplate);
+            setEdit(false);
+        }
+
+    };
+    const handleEdit = () => {
+        console.log('Edit mode on');
+        setEdit(true);
+    };
+
+    const handleCancel = () => {
+        setEdit(false);
+    }
+    const formatCode = (code) => {
+        return code
+            .replace(/;/g, ';\n')
+            .replace(/{/g, '{\n')
+            .replace(/}/g, '\n}\n')
+            .replace(/-->/g, '-->\n')
+            .replace(/>/g, '>\n')
+            .replace(/<\//g, '\n</')
+            .replace(/\n+/g, '\n')
+            .replace(/\,   /g, ',\n')
+            .replace(/\*\//g, '\*\/\n');
+    };
+
 
     return (
         <div className="template" style={{ paddingTop: '100px', justifyContent: 'center', alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
-            {!loading && <TemplateHeader template={template} />}
-            {!loading && <TemplateVisualization htmlString={template.html} cssString={template.css} />}
+            {!loading && <TemplateHeader template={template} onEdit={handleEdit} edit={edit} />}
+            {!loading && !edit && <TemplateVisualization htmlString={formatCode(template.html)} cssString={formatCode(template.css)} />}
+            {!loading && edit && <EditableTemplateVisualization initialHtml={formatCode(template.html)} initialCss={formatCode(template.css)} onSave={handleSave} onCancel={handleCancel} />}
         </div>
     );
 }

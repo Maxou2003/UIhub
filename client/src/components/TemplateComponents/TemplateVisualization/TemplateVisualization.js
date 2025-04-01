@@ -47,17 +47,6 @@ function TemplateVisualization({ htmlString, cssString }) {
         setCodeContent(type === 'html' ? htmlString : cssString);
     };
 
-    const formatCode = (code) => {
-        return code
-            .replace(/;/g, ';\n')
-            .replace(/{/g, '{\n')
-            .replace(/}/g, '\n}\n')
-            .replace(/-->/g, '-->\n')
-            .replace(/>/g, '>\n')
-            .replace(/<\//g, '\n</')
-            .replace(/\n+/g, '\n');
-    };
-
 
     return (
         <div className="template-visualization" >
@@ -77,8 +66,6 @@ function TemplateVisualization({ htmlString, cssString }) {
                     <SyntaxHighlighter
                         language={activeTab}
                         style={tomorrow}
-                        // wrapLines={true}
-                        // wrapLongLines={true}
                         customStyle={{
                             margin: 0,
                             padding: '1rem',
@@ -100,7 +87,7 @@ function TemplateVisualization({ htmlString, cssString }) {
                             }
                         }}
                     >
-                        {formatCode(codeContent)}
+                        {codeContent}
                     </SyntaxHighlighter>
                 </div>
             </div>

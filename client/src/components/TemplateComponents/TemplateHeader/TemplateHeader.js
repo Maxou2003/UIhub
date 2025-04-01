@@ -1,13 +1,13 @@
 import './TemplateHeader.css';
 import React, { use, useState } from 'react';
 import { IonIcon } from '@ionic/react';
-import { arrowBack, star, starOutline } from 'ionicons/icons';
+import { arrowBack, star, starOutline, createOutline } from 'ionicons/icons';
 import Modal from 'react-bootstrap/Modal'
 import api from '../../../utils/api';
 import { isConnected } from '../../../utils/connected';
 import { useEffect } from 'react';
 
-function TemplateHeader({ template: initialTemplate }) {
+function TemplateHeader({ template: initialTemplate, onEdit, edit }) {
 
     const [user, setUser] = useState({});
     const [loggedUser, setLoggedUser] = useState({});
@@ -96,13 +96,13 @@ function TemplateHeader({ template: initialTemplate }) {
         }
     };
 
-
+    const handleEdit = () => {
+        onEdit(true);
+    }
 
     const handleClose = () => {
         setShow(false);
     }
-
-
 
     return (
         <div className="template-header" >
@@ -172,19 +172,26 @@ function TemplateHeader({ template: initialTemplate }) {
                 </svg>
                     Fork</span></button>}
 
-                {/* {loggedUser._id == template.owner && !template.favorite &&
-                    <button className='fork-btn' onClick={handleFavoriteToggle}> <span>Add to favorite ✨</span></button>}
-
-                {loggedUser._id == template.owner && template.favorite &&
-                    <button className='fork-btn' onClick={handleFavoriteToggle}> <span>Remove from favorite</span></button>} */}
                 {loggedUser._id == template.owner && (
-                    <button
-                        className={`favorite-star-btn ${template.favorite ? 'favorite' : ''}`}
-                        onClick={handleFavoriteToggle}
-                        aria-label={template.favorite ? 'Remove from favorites' : 'Add to favorites'}
-                    >
-                        <IonIcon icon={template.favorite ? star : starOutline} />
-                    </button>
+                    <>
+                        {!edit &&
+                            <button className='fork-btn' onClick={handleEdit}>
+                                <IonIcon icon={createOutline} style={{
+                                    width: '1.2em',
+                                    height: '1.2em',
+                                    marginLeft: '0.5em',
+                                    padding: '0.2em',
+                                }} />
+                                <span>Edit</span>
+                            </button>}
+                        <button
+                            className={`favorite-star-btn ${template.favorite ? 'favorite' : ''}`}
+                            onClick={handleFavoriteToggle}
+                            aria-label={template.favorite ? 'Remove from favorites' : 'Add to favorites'}
+                        >
+                            <IonIcon icon={template.favorite ? star : starOutline} />
+                        </button>
+                    </>
                 )}
             </div>
         </div >
