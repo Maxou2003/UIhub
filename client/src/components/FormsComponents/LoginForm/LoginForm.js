@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './LoginForm.css';
 import api from '../../../utils/api';
+import { Link } from "react-router";
 
 function Login() {
 
@@ -88,7 +89,7 @@ function Login() {
                 </button>
             </div>
             <p className="signup">Don't have an account?
-                <a rel="noopener noreferrer" href="/signup" className=""> Sign up</a>
+                <Link to="/signup" className="sign-up-link"> Sign up</Link>
             </p>
         </div>
     );

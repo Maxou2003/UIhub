@@ -52,7 +52,7 @@
 }
 
 .login .form-container .forgot a,
-.login .form-container .signup a {
+.login .form-container .signup .sign-up-link {
     color: rgba(243, 244, 246, 1);
     text-decoration: none;
     font-size: 14px;

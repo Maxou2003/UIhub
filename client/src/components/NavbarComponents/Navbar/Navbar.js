@@ -78,10 +78,10 @@ function Navbar() {
 
     const handleLogOut = () => {
         localStorage.removeItem('key');
-        setConnected(false); // Update local state
-        setProfileImage(null); // Clear profile image
-        setShowSettings(false); // Close settings menu
-        navigate('/'); // Redirect to home
+        setConnected(false);
+        setProfileImage(null);
+        setShowSettings(false);
+        navigate('/');
     };
 
     return (
@@ -96,11 +96,11 @@ function Navbar() {
                     <IonIcon icon={home} />
                     <span> Home </span>
                 </Link>
-                <a href={`/profile/${userId}`} className="nav-item">
+                <Link to={`/profile/${userId}`} className="nav-item">
                     <IonIcon icon={person} />
                     <span> Profile </span>
-                </a>
-                <ConnexionBtn onLogin={() => setConnected(true)} />
+                </Link>
+                <ConnexionBtn />
                 {connected && (
                     <div
                         className='navbar-profile-img'
@@ -141,7 +141,7 @@ function Navbar() {
                     <hr />
                     <div className="setting_link" onClick={handleLogOut} >
                         <IonIcon icon={logOut} className="setting_icon" />
-                        <a href="/">Logout</a>
+                        Logout
                     </div>
                 </div>
             </div>

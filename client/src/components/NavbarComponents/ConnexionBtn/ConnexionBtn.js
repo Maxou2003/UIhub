@@ -5,12 +5,12 @@ import { add } from 'ionicons/icons';
 import { isConnected } from '../../../utils/connected'
 import { Link } from 'react-router-dom';
 
-function ConnexionBtn({ onLogin }) {
+function ConnexionBtn() {
 
     if (!isConnected()) {
         return (
             <div className='ConnexionBtnContainer'>
-                <Link to="/login" className="nav-item" onClick={onLogin}>
+                <Link to="/login" className="nav-item">
                     <button className="login-btn">Log In</button>
                 </Link>
                 <Link to="/signup" className="nav-item">
