@@ -41,6 +41,10 @@ function CreateTemplate() {
 
         if (!html.trim() || !css.trim()) {
             setError('Both HTML and CSS code are required');
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
             return;
         }
 
