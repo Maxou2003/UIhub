@@ -4,7 +4,7 @@ import './css/Login.css';
 
 function Login() {
     return (
-        <div className="login">
+        <div className="login-container">
             <LoginForm />
         </div>
     );

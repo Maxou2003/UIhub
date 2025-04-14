@@ -1,5 +1,4 @@
 .main-content {
-    padding-top: 100px;
     text-align: center;
     color: var(--text-color);
 }
@@ -11,7 +10,6 @@
 .main-content p {
     font-size: 40px;
     color: var(--secondary-text-color);
-    /* color: var(--text-color-light); */
 }
 
 

@@ -5,6 +5,8 @@
     background-color: var(--navbar-color);
     border-top: 1px solid var(--box-shadow-color);
     border-bottom: 1px solid var(--box-shadow-color);
+    margin-top: -70px;
+
 }
 
 

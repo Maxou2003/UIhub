@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import './Navbar.css';
 import { IonIcon } from '@ionic/react';
 import { home, person, logOut } from 'ionicons/icons';
-import ConnexionBtn from '../ConnexionBtn/ConnexionBtn';
+import NavbarBtn from '../NavbarBtn/NavbarBtn';
 import api from '../../../utils/api';
 import { isConnected } from '../../../utils/connected'; // Import the function now
 import { Link, useNavigate } from 'react-router-dom';
@@ -96,11 +96,12 @@ function Navbar() {
                     <IonIcon icon={home} />
                     <span> Home </span>
                 </Link>
-                <Link to={`/profile/${userId}`} className="nav-item">
-                    <IonIcon icon={person} />
-                    <span> Profile </span>
-                </Link>
-                <ConnexionBtn />
+                {connected &&
+                    <Link to={`/profile/${userId}`} className="nav-item">
+                        <IonIcon icon={person} />
+                        <span> Profile </span>
+                    </Link>}
+                <NavbarBtn />
                 {connected && (
                     <div
                         className='navbar-profile-img'

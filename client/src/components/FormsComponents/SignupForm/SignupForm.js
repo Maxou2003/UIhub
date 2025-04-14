@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import './SignupForm.css';
 import api from '../../../utils/api';
-import { set } from "mongoose";
 
 function SignupForm() {
 
@@ -35,7 +34,7 @@ function SignupForm() {
         e.preventDefault();
         setErrors({});
         setLoading(true);
-        const sign = document.querySelector('.signup .form-container .sign');
+        const sign = document.querySelector('.signup-container .form-container .sign');
         sign.style.marginTop = '1rem';
 
         if (!validateForm()) {

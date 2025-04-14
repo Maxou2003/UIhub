@@ -1,128 +1,168 @@
-.login .form-container {
-    width: 320px;
-    border-radius: 0.75rem;
-    background-color: #364156;
-    padding: 2rem;
-    color: rgba(243, 244, 246, 1);
+.login-container .form-container {
+    width: 380px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    margin: 80px auto;
+    box-shadow: 0 8px 32px rgba(142, 45, 226, 0.2);
+    border: 1px solid rgba(142, 45, 226, 0.1);
+    backdrop-filter: blur(8px);
+
 }
 
-.login .form-container .title {
+.login-container .form-container .title {
     text-align: center;
-    font-size: 1.5rem;
-    line-height: 2rem;
+    font-size: 1.8rem;
     font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, #8e2de2, #4a00e0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.login .form-container .form {
+.login-container .form-container .form {
     margin-top: 1.5rem;
 }
 
-.login .form-container .input-group {
-    margin-top: 0.25rem;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+.login-container .form-container .input-group {
+    margin-bottom: 1.5rem;
 }
 
-.login .form-container .input-group label {
-    display: flex;
-    color: rgba(243, 244, 246, 1);
-    margin-bottom: 4px;
+.login-container .form-container .input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #5a2d9a;
 }
 
-.login .form-container .input-group input {
+.login-container .form-container .input-group input {
     width: 100%;
-    border-radius: 0.375rem;
-    border: 1px solid rgba(55, 65, 81, 1);
-    outline: 0;
-    background-color: #cdcdcd;
-    padding: 0.75rem 1rem;
-    color: #011638;
+    padding: 0.9rem 1.2rem;
+    border: 2px solid #e0d0ff;
+    border-radius: 8px;
+    background: #f9f5ff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
 }
 
-.login .form-container .input-group input:focus {
-    border-color: rgba(167, 139, 250);
+.login-container .form-container .input-group input:focus {
+    border-color: #8e2de2;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(142, 45, 226, 0.2);
 }
 
-.login .form-container .forgot {
-    display: flex;
-    font-size: 0.75rem;
-    line-height: 1rem;
-    color: rgba(156, 163, 175, 1);
-    margin: 8px 0 14px 0;
+.login-container .form-container .error {
+    color: #ff3333;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
 }
 
-.login .form-container .forgot a,
-.login .form-container .signup .sign-up-link {
-    color: rgba(243, 244, 246, 1);
+.login-container .form-container .forgot {
+    text-align: right;
+    margin: -0.5rem 0 1rem;
+}
+
+.login-container .form-container .forgot a {
+    color: #8e2de2;
+    font-size: 0.9rem;
     text-decoration: none;
-    font-size: 14px;
+    transition: all 0.2s ease;
 }
 
-.login .form-container .forgot a:hover,
-.login .form-container .signup a:hover {
-    text-decoration: underline rgba(167, 139, 250, 1);
+.login-container .form-container .forgot a:hover {
+    text-decoration: underline;
+    color: #4a00e0;
 }
 
-.login .form-container .sign {
+.login-container .form-container .sign {
     display: block;
     width: 100%;
-    background-color: rgba(167, 139, 250, 1);
-    padding: 0.75rem;
-    text-align: center;
-    color: rgba(17, 24, 39, 1);
+    padding: 1rem;
+    background: linear-gradient(to right, #8e2de2, #4a00e0);
+    color: white;
     border: none;
-    border-radius: 0.375rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
     font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 15px rgba(142, 45, 226, 0.3);
 }
 
-.login .form-container .social-message {
+.login-container .form-container .sign:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(142, 45, 226, 0.4);
+}
+
+.login-container .form-container .sign:active {
+    transform: translateY(0);
+}
+
+.login-container .form-container .social-message {
     display: flex;
     align-items: center;
-    padding-top: 1rem;
+    margin: 1.5rem 0;
+    color: #666;
 }
 
-.login .form-container .line {
+.login-container .form-container .line {
+    flex: 1;
     height: 1px;
-    flex: 1 1 0%;
-    background-color: rgba(55, 65, 81, 1);
+    background: linear-gradient(to right, transparent, #d9c2ff, transparent);
 }
 
-.login .form-container .social-message .message {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    color: rgba(156, 163, 175, 1);
+.login-container .form-container .message {
+    padding: 0 1rem;
+    font-size: 0.9rem;
 }
 
-.login .form-container .social-icons {
+.login-container .form-container .social-icons {
     display: flex;
     justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
 }
 
-.login .form-container .social-icons .icon {
-    border-radius: 0.125rem;
-    padding: 0.75rem;
-    border: none;
-    background-color: transparent;
-    margin-left: 8px;
+.login-container .form-container .social-icons .icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f9f5ff;
+    transition: all 0.3s ease;
 }
 
-.login .form-container .social-icons .icon svg {
-    height: 1.25rem;
-    width: 1.25rem;
-    fill: #fff;
+.login-container .form-container .social-icons .icon:hover {
+    background: #e0d0ff;
+    transform: translateY(-2px);
 }
 
-.login .form-container .signup {
+.login-container .form-container .social-icons .icon svg {
+    width: 20px;
+    height: 20px;
+    fill: #8e2de2;
+}
+
+.login-container .form-container .signup {
     text-align: center;
-    font-size: 0.75rem;
-    line-height: 1rem;
-    color: rgba(156, 163, 175, 1);
-    height: auto;
+    color: #666;
+    font-size: 1rem;
+    padding-top: 2rem;
 }
 
-.login .form-container .error {
-    color: red;
-    font-weight: bold;
+.login-container .form-container .signup a {
+    color: #8e2de2;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.login-container .form-container .signup a:hover {
+    text-decoration: underline;
+    color: #4a00e0;
 }

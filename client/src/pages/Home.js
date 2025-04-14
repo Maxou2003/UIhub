@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MainContent from '../components/HomeMainContent/HomeMainContent';
 import api from '../utils/api';
+import { isConnected } from '../utils/connected';
 
 function Home() {
 
@@ -16,8 +17,10 @@ function Home() {
                 console.error('Error fetching user:', error);
             }
         };
-        fetchLoggedUser();
-    }, []);
+        if (isConnected) {
+            fetchLoggedUser();
+        }
+    }, [isConnected]);
     return (
 
         <div className="Home">

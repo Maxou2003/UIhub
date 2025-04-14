@@ -3,12 +3,12 @@ import { IonIcon } from '@ionic/react';
 import { chevronBack, chevronForward } from 'ionicons/icons';
 import Card from '../../Card/Card';
 import api from '../../../utils/api';
+import { isConnected } from '../../../utils/connected';
 import './ProfileCardCarrusel.css';
 
 
 
 function ProfileCardCarroussel({ favorite, logged, id }) {
-
     const [cards, setCards] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -16,17 +16,20 @@ function ProfileCardCarroussel({ favorite, logged, id }) {
     const nbCards = 3;
     const isOwner = logged?._id === id;
 
-
     useEffect(() => {
         const fetchData = async () => {
             try {
-
                 const endpoint = isOwner ? 'profile/' : `profile/${id}`;
                 const response = await api.get(endpoint);
-                console.log('isOwner: ', isOwner, ' , endpoint: ', endpoint);
+
+                // Filter public templates if not owner
+                const templates = isOwner
+                    ? response.data.template
+                    : response.data.template?.filter(t => t.public) || [];
+
                 setCards(favorite
-                    ? response.data.favorite
-                    : response.data.template
+                    ? templates.filter(t => t.favorite)
+                    : templates
                 );
             } catch (error) {
                 setError(error);
@@ -36,10 +39,10 @@ function ProfileCardCarroussel({ favorite, logged, id }) {
             }
         };
 
-        if (logged && id) {
+        if (id) {
             fetchData();
         }
-    }, [id, logged, favorite, isOwner]);
+    }, [id, favorite, isOwner]);
 
     const handleNext = () => {
         if (currentIndex + nbCards >= cards.length) return;

@@ -4,7 +4,7 @@ import './css/Signup.css';
 
 function Signup() {
     return (
-        <div className="signup">
+        <div className="signup-container">
             <SignupForm />
         </div>
     );

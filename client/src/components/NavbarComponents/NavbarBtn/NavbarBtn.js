@@ -1,11 +1,11 @@
 import React from 'react';
-import './ConnexionBtn.css';
+import './NavbarBtn.css';
 import { IonIcon } from '@ionic/react';
 import { add } from 'ionicons/icons';
 import { isConnected } from '../../../utils/connected'
 import { Link } from 'react-router-dom';
 
-function ConnexionBtn() {
+function NavbarBtn() {
 
     if (!isConnected()) {
         return (
@@ -31,4 +31,4 @@ function ConnexionBtn() {
         );
     }
 }
-export default ConnexionBtn;
+export default NavbarBtn;

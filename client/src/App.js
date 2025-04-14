@@ -15,17 +15,17 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        {localStorage.getItem('key') && JSON.parse(localStorage.getItem('key')).value != null &&
+      <div className="main-app-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/profile/:id" element={<Profile />} />
-        }
-        <Route path="/template/:id" element={<Template />} />
-        <Route path="/create" element={<CreateTemplate />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          <Route path="/template/:id" element={<Template />} />
+          <Route path="/create" element={<CreateTemplate />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
     </Router>
   );
 }
