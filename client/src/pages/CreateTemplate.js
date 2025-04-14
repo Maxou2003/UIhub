@@ -35,9 +35,31 @@ function CreateTemplate() {
         checkAuthAndGetUserId();
     }, [navigate]);
 
+    const validateTemplate = (html, css) => {
+        const videoTags = ['<video', '<iframe', '<embed', '<source'];
+        const videoExtensions = ['.mp4', '.webm', '.ogg'];
+
+        const hasVideoTags = videoTags.some(tag => html.includes(tag));
+
+        const hasVideoExtensions = videoExtensions.some(ext =>
+            html.includes(ext) || css.includes(ext)
+        );
+
+        return !(hasVideoTags || hasVideoExtensions);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
+
+        if (!validateTemplate(html, css)) {
+            setError("Video content is not allowed");
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            return;
+        }
 
         if (!html.trim() || !css.trim()) {
             setError('Both HTML and CSS code are required');
