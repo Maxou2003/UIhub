@@ -21,7 +21,7 @@ function ConnexionBtn() {
     } else {
         return (
             <div className='ConnexionBtnContainer'>
-                <Link to="/" className="nav-item">
+                <Link to="/create" className="nav-item">
                     <button className="button2 create-btn">
                         <IonIcon icon={add} className="create-icon" />
                         <span>Create</span>

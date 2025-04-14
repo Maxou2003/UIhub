@@ -1,7 +1,7 @@
 .card {
     display: flex;
-    width: 35lvh;
-    height: 30lvh;
+    width: 45lvh;
+    height: 40lvh;
     border-radius: 15px;
     /* background: #364156; */
     background-color: var(--navbar-color);

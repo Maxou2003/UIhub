@@ -7,26 +7,27 @@ import './ProfileCardCarrusel.css';
 
 
 
-function ProfileCardCarroussel({ favorite, logged, isOwner, id }) {
+function ProfileCardCarroussel({ favorite, logged, id }) {
 
     const [cards, setCards] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(0);
     const nbCards = 3;
+    const isOwner = logged?._id === id;
 
 
     useEffect(() => {
-        const endOfUrl = isOwner ? '' : id;
         const fetchData = async () => {
             try {
-                const response = await api.get(`profile/${endOfUrl}`);
-                if (favorite) {
-                    setCards(response.data.favorite);
-                } else {
-                    setCards(response.data.template);
-                }
 
+                const endpoint = isOwner ? 'profile/' : `profile/${id}`;
+                const response = await api.get(endpoint);
+                console.log('isOwner: ', isOwner, ' , endpoint: ', endpoint);
+                setCards(favorite
+                    ? response.data.favorite
+                    : response.data.template
+                );
             } catch (error) {
                 setError(error);
                 console.error("ProfileCarrousel error", error);
@@ -35,8 +36,10 @@ function ProfileCardCarroussel({ favorite, logged, isOwner, id }) {
             }
         };
 
-        fetchData();
-    }, []);
+        if (logged && id) {
+            fetchData();
+        }
+    }, [id, logged, favorite, isOwner]);
 
     const handleNext = () => {
         if (currentIndex + nbCards >= cards.length) return;

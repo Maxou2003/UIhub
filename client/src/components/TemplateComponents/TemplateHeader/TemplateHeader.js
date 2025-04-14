@@ -21,6 +21,8 @@ function TemplateHeader({ template: initialTemplate, onEdit, edit }) {
     const [loadingUserInfo, setLoadingUserInfo] = useState(true);
     const [loadingLoggedUserInfo, setLoadingLoggedUserInfo] = useState(true);
     const [loadingProfileImage, setLoadingProfileImage] = useState(true);
+    const [isToggling, setIsToggling] = useState(false);
+
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -82,17 +84,36 @@ function TemplateHeader({ template: initialTemplate, onEdit, edit }) {
 
     const handleFavoriteToggle = async () => {
         try {
-            const newFavoriteStatus = !template.favorite;
-            setTemplate(prev => ({ ...prev, favorite: newFavoriteStatus }));
+            const newPublicStatus = !template.favorite;
+            setTemplate(prev => ({ ...prev, favorite: newPublicStatus }));
 
             await api.put(`/template`, {
                 ...template,
-                favorite: newFavoriteStatus
+                favorite: newPublicStatus
             });
 
         } catch (error) {
             console.log(error);
             setTemplate(prev => ({ ...prev, favorite: !template.favorite }));
+        }
+    };
+
+    const handlePublicToggle = async (e) => {
+        const newPublicStatus = e.target.checked;
+        setIsToggling(true);
+
+        try {
+            setTemplate(prev => ({ ...prev, public: newPublicStatus }));
+
+            await api.put(`/template`, {
+                ...template,
+                public: newPublicStatus
+            });
+        } catch (error) {
+            console.log(error);
+            setTemplate(prev => ({ ...prev, public: !newPublicStatus }));
+        } finally {
+            setIsToggling(false);
         }
     };
 
@@ -174,6 +195,15 @@ function TemplateHeader({ template: initialTemplate, onEdit, edit }) {
 
                 {loggedUser._id == template.owner && (
                     <>
+                        <p>{template.public ? "Public" : "Private"}</p>
+                        <label className="switch" >
+                            <input type="checkbox"
+                                checked={template.public ?? false}
+                                onChange={handlePublicToggle}
+                                disabled={isToggling}
+                            />
+                            <span className="slider"></span>
+                        </label>
                         {!edit &&
                             <button className='fork-btn' onClick={handleEdit}>
                                 <IonIcon icon={createOutline} style={{

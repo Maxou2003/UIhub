@@ -7,38 +7,34 @@ import ProfileCardCarrusel from '../components/ProfileComponents/ProfileCardCarr
 
 
 function Profile() {
-
-    let { id } = useParams();
-    const [loggedUSer, setLoggedUser] = useState({});
-    const [isOwner, setIsOwner] = useState(false);
+    const { id } = useParams();
+    const [loggedUser, setLoggedUser] = useState(null);
 
     useEffect(() => {
-
         const fetchLoggedUser = async () => {
             try {
                 const response = await api.get(`/auth/logged`);
                 setLoggedUser(response.data.user);
-                setIsOwner(response.data.user._id == id);
-                console.log("isOwner", response.data.user._id == id);
-                console.log('loggedUSer', loggedUSer);
-                console.log('isOwner', isOwner);
             } catch (error) {
                 console.error('Error fetching user:', error);
+                setLoggedUser(null);
             }
         };
         fetchLoggedUser();
     }, []);
 
+    if (!loggedUser) return <div>Loading...</div>;
+
     return (
         <div className="profile">
-            <ProfileHeader isOwner={isOwner} id={id} />
+            <ProfileHeader isOwner={loggedUser._id === id} id={id} />
             <div className="profile-content">
                 <h1 className="title">Favorite✨</h1>
-                <ProfileCardCarrusel favorite={true} logged={loggedUSer} isOwner={isOwner} id={id} />
+                <ProfileCardCarrusel favorite={true} logged={loggedUser} id={id} />
             </div>
             <div className="profile-content">
                 <h1 className="title">All templates</h1>
-                <ProfileCardCarrusel favorite={false} logged={loggedUSer} isOwner={isOwner} id={id} />
+                <ProfileCardCarrusel favorite={false} logged={loggedUser} id={id} />
             </div>
         </div>
     );
