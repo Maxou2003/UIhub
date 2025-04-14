@@ -7,7 +7,7 @@ import { isConnected } from '../../utils/connected';
 
 function Card({ htmlString, cssString, id, logged, owner }) {
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const [displayDeleteButton, setDisplayDeleteButton] = useState(isConnected() && (logged._id === owner));
+  const [displayDeleteButton, setDisplayDeleteButton] = useState(isConnected() && logged && (logged._id === owner));
 
   const iframeContent = `
     <!DOCTYPE html>

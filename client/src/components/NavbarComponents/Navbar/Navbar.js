@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './Navbar.css';
 import { IonIcon } from '@ionic/react';
-import { home, person, logOut } from 'ionicons/icons';
+import { home, person, logOut, compass } from 'ionicons/icons';
 import NavbarBtn from '../NavbarBtn/NavbarBtn';
 import api from '../../../utils/api';
 import { isConnected } from '../../../utils/connected'; // Import the function now
@@ -95,6 +95,10 @@ function Navbar() {
                 <Link to="/" className="nav-item">
                     <IonIcon icon={home} />
                     <span> Home </span>
+                </Link>
+                <Link to="/explorer" className="nav-item">
+                    <IonIcon icon={compass} />
+                    <span> Explore </span>
                 </Link>
                 {connected &&
                     <Link to={`/profile/${userId}`} className="nav-item">

@@ -1,5 +1,6 @@
 import './TemplateHeader.css';
 import React, { use, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { IonIcon } from '@ionic/react';
 import { arrowBack, star, starOutline, createOutline } from 'ionicons/icons';
 import Modal from 'react-bootstrap/Modal'
@@ -22,6 +23,8 @@ function TemplateHeader({ template: initialTemplate, onEdit, edit }) {
     const [loadingLoggedUserInfo, setLoadingLoggedUserInfo] = useState(true);
     const [loadingProfileImage, setLoadingProfileImage] = useState(true);
     const [isToggling, setIsToggling] = useState(false);
+
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -172,7 +175,8 @@ function TemplateHeader({ template: initialTemplate, onEdit, edit }) {
                     )}
                 </Modal.Footer>
             </Modal>
-            <button className="header-button" onClick={() => window.location.href = '/'}>
+            <button className="header-button" onClick={() => navigate(-1)} >
+                {/* onClick={() => window.location.href = '/'} */}
                 <IonIcon icon={arrowBack} /> Go Back
             </button>
             <div className='template-right-side'>

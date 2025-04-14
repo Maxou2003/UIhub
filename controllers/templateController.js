@@ -75,12 +75,12 @@ exports.forkTemplate = (req, res) => {
 
 exports.getTemplateLabel = (req, res) => {
     let tab = [];
-    console.log(req.body);
-    for (const obj in req.body){
-        tab.push({'label':req.body[obj]})
+    for (const obj in req.body) {
+        tab.push({ 'label': req.body[obj] })
     }
-    Template.find({public: true,
+    Template.find({
+        public: true,
         $or: tab
-      }).then(templates => res.status(200).json(templates))
-      .catch(error => res.status(401).json({ error, message: "Can't find any templates" }))
+    }).then(templates => res.status(200).json(templates))
+        .catch(error => res.status(401).json({ error, message: "Can't find any templates" }))
 }

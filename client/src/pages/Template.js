@@ -78,7 +78,7 @@ function Template() {
 
 
     return (
-        <div className="template" style={{ paddingTop: '100px', justifyContent: 'center', alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
+        <div className="template" style={{ justifyContent: 'center', alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
             {!loading && <TemplateHeader template={template} onEdit={handleEdit} edit={edit} />}
             {!loading && !edit && <TemplateVisualization htmlString={formatCode(template.html)} cssString={formatCode(template.css)} />}
             {!loading && edit && <EditableTemplateVisualization initialHtml={formatCode(template.html)} initialCss={formatCode(template.css)} onSave={handleSave} onCancel={handleCancel} />}
