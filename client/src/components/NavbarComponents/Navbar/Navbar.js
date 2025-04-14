@@ -47,9 +47,9 @@ function Navbar() {
 
         const fetchUserInfo = async () => {
             try {
-                const response = await api.get('profile/');
-                setUsername(response.data.username);
-                const ownerId = response.data.template[0].owner;
+                const response = await api.get('auth/logged/');
+                setUsername(response.data.user.username);
+                const ownerId = response.data.user._id;
                 setUserId(ownerId);
             } catch (error) {
                 console.log(error);
