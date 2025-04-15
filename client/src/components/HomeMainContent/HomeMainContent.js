@@ -44,18 +44,6 @@ function MainContent({ logged }) {
                     <p className="subtitle">Explore our amazing features and designs!</p>
                 </div>
             </div>
-
-            <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-5">
-                        <div className="search-container">
-                            <input type="text" className="form-control search-input" placeholder="Search..." />
-                            <IonIcon className='search-icon' icon={search} />
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div className="card-gallery">
                 {cards.templates.map((card, index) => (
                     <Card key={index} htmlString={card.html} cssString={card.css} id={card._id} logged={logged} owner={card.owner} />
