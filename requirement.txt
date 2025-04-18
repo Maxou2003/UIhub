@@ -1,8 +1,0 @@
-back:
-express
-mongoose
-nodemon
-
-front:
-axios
-react-router-dom

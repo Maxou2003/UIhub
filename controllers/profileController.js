@@ -35,29 +35,6 @@ exports.getImage = (req, res) => {
         .catch(error => res.status(401).json({ error }));
 }
 
-exports.putBanner = (req, res) => {
-    const id = { _id: new mongoose.Types.ObjectId(req.auth.userId) };
-    User.findOne(id)
-        .then(user => {
-            delete user._id,
-                user.banner_image = req.body.banner,
-                User.findOneAndUpdate(id, user)
-                    .then(() => res.status(200).json({ message: 'Profile updated' }))
-                    .catch(error => res.status(400).json({ error }));
-        }).catch(error => res.status(400).json({ error }));
-}
-
-exports.putImage = (req, res) => {
-    const id = { _id: new mongoose.Types.ObjectId(req.auth.userId) };
-    User.findOne(id)
-        .then(user => {
-            delete user._id,
-                user.profile_image = req.body.image,
-                User.findOneAndUpdate(id, user)
-                    .then(() => res.status(200).json({ message: 'Profile updated' }))
-                    .catch(error => res.status(400).json({ error }));
-        }).catch(error => res.status(400).json({ error }));
-}
 
 exports.getOtherBanner = (req, res) => {
     User.findOne({ _id: new mongoose.Types.ObjectId(req.params.user) })
