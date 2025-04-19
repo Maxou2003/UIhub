@@ -29,8 +29,13 @@ _Interactive UI editor with live preview._
 git clone https://github.com/Maxou2003/UIhub.git
 cd UIHUB
 
-# Install dependencies
+# Install server's dependencies
 npm install --force
+
+# Install client's dependencies
+cd client
+npm install --force
+cd ..
 
 # Start the development server
 npm run dev
