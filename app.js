@@ -5,8 +5,9 @@ const mongoose = require('mongoose');
 const userRoutes = require('./routes/user');
 const templateRoutes = require('./routes/template');
 const profileRoutes = require('./routes/profile.js');
+require('dotenv').config();
 
-mongoose.connect('mongodb+srv://Maxou:Maxou*Dbpassword@cluster0.4uqax.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
+mongoose.connect(process.env.DATABASE_URL,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
