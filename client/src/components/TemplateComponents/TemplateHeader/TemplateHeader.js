@@ -79,7 +79,7 @@ function TemplateHeader({ template: initialTemplate, onEdit, edit }) {
                 setShow(true);
             })
             .catch(error => {
-                console.log(error);
+                console.error(error);
                 setModalContent('We haven\'t been able to fork the template !');
                 setShow(true);
             });
@@ -96,7 +96,7 @@ function TemplateHeader({ template: initialTemplate, onEdit, edit }) {
             });
 
         } catch (error) {
-            console.log(error);
+            console.error(error);
             setTemplate(prev => ({ ...prev, favorite: !template.favorite }));
         }
     };
@@ -113,7 +113,7 @@ function TemplateHeader({ template: initialTemplate, onEdit, edit }) {
                 public: newPublicStatus
             });
         } catch (error) {
-            console.log(error);
+            console.error(error);
             setTemplate(prev => ({ ...prev, public: !newPublicStatus }));
         } finally {
             setIsToggling(false);
@@ -176,7 +176,6 @@ function TemplateHeader({ template: initialTemplate, onEdit, edit }) {
                 </Modal.Footer>
             </Modal>
             <button className="header-button" onClick={() => navigate(-1)} >
-                {/* onClick={() => window.location.href = '/'} */}
                 <IonIcon icon={arrowBack} /> Go Back
             </button>
             <div className='template-right-side'>

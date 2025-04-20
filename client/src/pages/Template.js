@@ -49,14 +49,12 @@ function Template() {
         } catch (error) {
             console.error(error);
         } finally {
-            console.log('Edit mode off');
             setTemplate(updatedTemplate);
             setEdit(false);
         }
 
     };
     const handleEdit = () => {
-        console.log('Edit mode on');
         setEdit(true);
     };
 

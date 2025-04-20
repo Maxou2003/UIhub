@@ -14,7 +14,6 @@ function Profile() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // Fetch profile data regardless of connection status
                 if (isConnected()) {
                     const response = await api.get('/auth/logged');
                     setLoggedUser(response.data.user);
@@ -30,7 +29,7 @@ function Profile() {
         };
 
         fetchData();
-    }, [id]); // Only depend on id
+    }, [id]);
 
     return (
         <div className="profile">

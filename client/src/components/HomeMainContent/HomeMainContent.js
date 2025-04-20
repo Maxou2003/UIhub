@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './HomeMainContent.css';
-import { IonIcon } from '@ionic/react';
-import { search } from 'ionicons/icons';
 import Card from '../Card/Card';
 import api from '../../utils/api';
 

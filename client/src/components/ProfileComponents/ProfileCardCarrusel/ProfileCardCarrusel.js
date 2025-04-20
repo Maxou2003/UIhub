@@ -22,7 +22,6 @@ function ProfileCardCarroussel({ favorite, logged, id }) {
                 const endpoint = isOwner ? 'profile/' : `profile/${id}`;
                 const response = await api.get(endpoint);
 
-                // Filter public templates if not owner
                 const templates = isOwner
                     ? response.data.template
                     : response.data.template?.filter(t => t.public) || [];

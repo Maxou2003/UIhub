@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import './ProfileHeader.css';
 import api from '../../../utils/api';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 
 function ProfileHeader({ isOwner, id }) {
 

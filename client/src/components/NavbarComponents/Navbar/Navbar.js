@@ -4,7 +4,7 @@ import { IonIcon } from '@ionic/react';
 import { home, person, logOut, compass } from 'ionicons/icons';
 import NavbarBtn from '../NavbarBtn/NavbarBtn';
 import api from '../../../utils/api';
-import { isConnected } from '../../../utils/connected'; // Import the function now
+import { isConnected } from '../../../utils/connected';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Navbar() {
@@ -12,7 +12,7 @@ function Navbar() {
     const [username, setUsername] = useState('Username');
     const [userId, setUserId] = useState('');
     const [showSettings, setShowSettings] = useState(false);
-    const [connected, setConnected] = useState(isConnected()); // Local state
+    const [connected, setConnected] = useState(isConnected());
     const settingsRef = useRef(null);
     const navigate = useNavigate();
 
@@ -40,7 +40,7 @@ function Navbar() {
                 );
                 setProfileImage(`data:image/png;base64,${base64}`);
             } catch (error) {
-                console.log('Error fetching profile image:', error);
+                console.error('Error fetching profile image:', error);
                 setProfileImage(null);
             }
         };
@@ -52,14 +52,13 @@ function Navbar() {
                 const ownerId = response.data.user._id;
                 setUserId(ownerId);
             } catch (error) {
-                console.log(error);
+                console.error(error);
             }
         };
 
         fetchProfileImage();
         fetchUserInfo();
 
-        // Close settings when clicking outside
         const handleClickOutside = (event) => {
             if (settingsRef.current && !settingsRef.current.contains(event.target)) {
                 setShowSettings(false);
@@ -70,7 +69,7 @@ function Navbar() {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [connected]); // Re-run when connection status changes
+    }, [connected]);
 
     const toggleSettings = () => {
         setShowSettings(!showSettings);

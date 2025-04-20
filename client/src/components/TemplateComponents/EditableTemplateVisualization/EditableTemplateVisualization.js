@@ -113,19 +113,6 @@ function EditableTemplateVisualization({ initialHtml, initialCss, onSave, onCanc
                     >
                         Save Changes
                     </button>
-
-                    {/* <SyntaxHighlightingEditor
-                        language={activeTab}
-                        value={activeTab === 'html' ? html : css}
-                        onChange={(value) => {
-                            if (activeTab === 'html') {
-                                setHtml(value);
-                            } else {
-                                setCss(value);
-                            }
-                            setIsDirty(true);
-                        }}
-                    /> */}
                 </div>
             </div>
         </div >
