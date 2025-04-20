@@ -83,7 +83,7 @@ function ProfileCardCarroussel({ favorite, logged, id }) {
         <div className="profile-card-carrusel">
             <IonIcon onClick={handlePrevious} className="chevron back-chevron" icon={chevronBack} />
             {cards.filter((card, index) => index >= currentIndex && index < currentIndex + nbCards).map((card, index) => (
-                < Card key={index} htmlString={card.html} cssString={card.css} id={card._id} logged={logged} owner={card.owner} />
+                < Card key={index} htmlString={card.html} cssString={card.css} id={card._id} logged={logged} owner={card.owner} profile={true} />
             ))}
             <IonIcon onClick={handleNext} className="chevron forward-chevron" icon={chevronForward} />
         </div>

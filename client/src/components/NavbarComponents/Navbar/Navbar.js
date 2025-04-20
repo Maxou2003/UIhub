@@ -26,7 +26,7 @@ function Navbar() {
     }, []);
 
     useEffect(() => {
-        if (!connected) return; // Only fetch if connected
+        if (!connected) return;
 
         const fetchProfileImage = async () => {
             try {

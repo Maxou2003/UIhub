@@ -125,6 +125,7 @@ function ProfileHeader({ isOwner, id }) {
             setUsername(editUsername);
             if (newProfileImage) {
                 setProfileImage(profilePreview);
+                document.querySelector('.navbar-profile-img img').src = profilePreview;
             }
             if (newBannerImage) {
                 setBanner(bannerPreview);

@@ -5,9 +5,9 @@ import { trashOutline, closeOutline, checkmarkOutline } from 'ionicons/icons';
 import api from '../../utils/api';
 import { isConnected } from '../../utils/connected';
 
-function Card({ htmlString, cssString, id, logged, owner }) {
+function Card({ htmlString, cssString, id, logged, owner, profile }) {
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const [displayDeleteButton, setDisplayDeleteButton] = useState(isConnected() && logged && (logged._id === owner));
+  const [displayDeleteButton, setDisplayDeleteButton] = useState(isConnected() && logged && (logged._id === owner) && profile);
 
   const iframeContent = `
     <!DOCTYPE html>
