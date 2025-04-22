@@ -100,10 +100,10 @@ function Navbar() {
                     <span> Explore </span>
                 </Link>
                 {connected &&
-                    <Link to={`/profile/${userId}`} className="nav-item">
+                    <a href={`/profile/${userId}`} className="nav-item">
                         <IonIcon icon={person} />
                         <span> Profile </span>
-                    </Link>}
+                    </a>}
                 <NavbarBtn />
                 {connected && (
                     <div
